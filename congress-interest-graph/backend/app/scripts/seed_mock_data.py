@@ -198,15 +198,21 @@ def main():
     logger.info(f"Config: max_depth={settings.max_graph_depth}, "
                  f"default_limit={settings.default_graph_limit}")
 
-    # Clear first
-    logger.info("Clearing existing data...")
-    Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(bind=engine)
-
-    driver = get_driver()
-    with driver.session() as session:
-        session.run("MATCH (n) DETACH DELETE n")
-    logger.info("Databases cleared.")
+    # Clear only mock data (not real/uscl data)
+    logger.info("Clearing existing mock data...")
+    db_clear = SessionLocal()
+    try:
+        # Delete only mock-sourced records, preserve real data
+        for model in [Member, Organization, Event, SourceDocument, MockSeedManifest]:
+            db_clear.query(model).filter(model.source == "mock").delete(synchronize_session=False)
+        # Claims use source_reliability instead of source column
+        db_clear.query(Claim).filter(Claim.source_reliability == "mock").delete(synchronize_session=False)
+        db_clear.commit()
+    except Exception:
+        db_clear.rollback()
+    finally:
+        db_clear.close()
+    logger.info("Mock data cleared.")
 
     # Generate mock data
     logger.info("Generating mock data...")

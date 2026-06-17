@@ -23,6 +23,7 @@ class MemberSummary(BaseModel):
     official_photo_url: Optional[str] = None
     committee_tags: list[str] = Field(default_factory=list)
     congress: Optional[int] = None
+    source: str = "mock"
 
 
 class CommitteeMembership(BaseModel):
@@ -56,6 +57,10 @@ class MemberDetail(BaseModel):
     china_stance_summary: Optional[str] = None
     controversies: list[dict] = Field(default_factory=list)
     congress: Optional[int] = None
+    source: str = "mock"
+    latest_term_start: Optional[str] = None
+    latest_term_end: Optional[str] = None
+    official_ids: dict = Field(default_factory=dict)
 
 
 class OrganizationSummary(BaseModel):
@@ -159,12 +164,14 @@ class SearchResult(BaseModel):
     organizations: list[OrganizationSummary] = Field(default_factory=list)
     events: list[EventModel] = Field(default_factory=list)
     total_count: int = 0
+    source: str = "postgresql"
 
 
 class RadarMetric(BaseModel):
     metric_name: str
     member_id: str
     value: float = Field(ge=0.0, le=100.0)
+    source_reliability: str = "mock"
 
 
 class CompareRequest(BaseModel):

@@ -3,6 +3,6 @@ backend/data/etl_runs/
 backend/data/etl_dry_run/
 backend/data/stress/
 # Large vendor data files (downloaded separately)
-backend/data/external/congress-legislators/*/
+backend/data/external/
 # Frontend build output
 frontend/dist/

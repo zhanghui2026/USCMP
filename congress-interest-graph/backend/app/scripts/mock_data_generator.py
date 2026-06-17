@@ -7,7 +7,7 @@ All data is marked with source_reliability='mock' and extraction_method='mock'.
 import random
 import hashlib
 import uuid
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from typing import Any
 
 random.seed(42)
@@ -177,7 +177,7 @@ class MockDataGenerator:
             state = _pick(STATES, i)
             congress = _pick([117, 118, 119], i)
             member_id = _hash_id("person", name, state, chamber)
-            bioguide_id = "B" + str(i).zfill(6)
+            bioguide_id = "MOCK" + str(i).zfill(6)
             govtrack_id = str(400000 + i)
             fec_id = "H" + str(i).zfill(2) + "TX" + str(i).zfill(2)
             prefix = "Sen." if chamber == "senate" else "Rep."
@@ -273,9 +273,14 @@ class MockDataGenerator:
                 ],
                 "china_stance_summary": china_stance,
                 "controversies": controversies,
+                "source": "mock",
                 "source_reliability": "mock",
                 "extraction_method": "mock",
                 "congress": congress,
+                "last_updated": datetime.now(timezone.utc).isoformat(),
+                "latest_term_start": None,
+                "latest_term_end": None,
+                "official_ids": {},
             }
             self.members.append(member)
 

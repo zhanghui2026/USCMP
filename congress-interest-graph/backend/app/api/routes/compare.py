@@ -5,55 +5,12 @@ from sqlalchemy.orm import Session
 from app.db.postgres import get_db
 from app.models.sqlalchemy.models import Member
 from app.models.pydantic.models import (
-    CompareRequest, CompareResponse, RadarMetric, MemberDetail, CommitteeMembership,
+    CompareRequest, CompareResponse, MemberDetail, CommitteeMembership,
 )
 from app.core.errors import CompareTooFewMembersError, NotFoundError
+from app.services.compare_service import compute_radar_metrics
 
 router = APIRouter(tags=["compare"])
-
-
-def _compute_radar_metrics(member: Member) -> list[RadarMetric]:
-    """Compute rule-based radar metrics for a member."""
-    metrics = []
-
-    # Party alignment: simplistic baseline
-    party_alignment = 75.0 + (hash(member.id) % 20 - 10)
-    metrics.append(RadarMetric(
-        metric_name="party_alignment", member_id=member.id,
-        value=max(0.0, min(100.0, party_alignment)),
-    ))
-
-    # China hawkishness: based on stance summary
-    china_score = 50.0
-    if member.china_stance_summary:
-        china_score += 15.0 if "强硬" in member.china_stance_summary else -10.0
-    metrics.append(RadarMetric(
-        metric_name="china_hawkishness", member_id=member.id,
-        value=max(0.0, min(100.0, china_score)),
-    ))
-
-    # Donor exposure: based on top contributors
-    donor_score = min(100.0, len(member.top_contributors or []) * 15.0)
-    metrics.append(RadarMetric(
-        metric_name="donor_exposure", member_id=member.id,
-        value=donor_score,
-    ))
-
-    # Conflict risk
-    conflict = 30.0 + (hash(member.id + "conflict") % 40)
-    metrics.append(RadarMetric(
-        metric_name="conflict_risk", member_id=member.id,
-        value=max(0.0, min(100.0, conflict)),
-    ))
-
-    # Committee relevance
-    committee_score = min(100.0, len(member.committee_memberships or []) * 20.0)
-    metrics.append(RadarMetric(
-        metric_name="committee_relevance", member_id=member.id,
-        value=committee_score,
-    ))
-
-    return metrics
 
 
 @router.post("/compare", response_model=CompareResponse)
@@ -109,7 +66,7 @@ def compare_members(request: CompareRequest, db: Session = Depends(get_db)):
     # Compute radar metrics for all members
     radar_metrics = []
     for m in members:
-        radar_metrics.extend(_compute_radar_metrics(m))
+        radar_metrics.extend(compute_radar_metrics(m))
 
     # Find common donors (mock)
     common_donors = []
@@ -149,5 +106,5 @@ def compare_members(request: CompareRequest, db: Session = Depends(get_db)):
         common_donors=common_donors,
         common_committees=common_committees,
         opposing_votes=[],
-        disclaimer="仅供研究参考，不构成事实认定、法律判断或投资建议。评分基于可解释规则模型。",
+        disclaimer="仅供研究参考，不构成事实认定、法律判断或投资建议。所有指标评分基于 Mock 演示数据，不代表真实分析结果。",
     )

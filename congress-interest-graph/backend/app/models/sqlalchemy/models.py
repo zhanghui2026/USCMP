@@ -1,9 +1,9 @@
 """SQLAlchemy ORM models for PostgreSQL."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import (
     Column, String, Integer, Float, Boolean, Text, Date,
-    DateTime, JSON, ForeignKey
+    DateTime, JSON, ForeignKey, Index
 )
 from sqlalchemy.orm import relationship
 from app.db.postgres import Base
@@ -22,7 +22,7 @@ class Member(Base):
     state = Column(String(2), index=True)
     district = Column(String)
     official_photo_url = Column(String)
-    bioguide_id = Column(String)
+    bioguide_id = Column(String, unique=True, index=True)
     govtrack_id = Column(String)
     fec_candidate_id = Column(String)
     opensecrets_id = Column(String)
@@ -32,11 +32,16 @@ class Member(Base):
     career_summary = Column(JSON, default=[])
     china_stance_summary = Column(Text)
     controversies = Column(JSON, default=[])
+    source = Column(String, nullable=False, default="mock", index=True)
     source_reliability = Column(String, default="mock")
     extraction_method = Column(String, default="mock")
     congress = Column(Integer, index=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    last_updated = Column(DateTime(timezone=True))
+    latest_term_start = Column(String(16))
+    latest_term_end = Column(String(16))
+    official_ids = Column(JSON, default=dict)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
 
 class Organization(Base):
@@ -52,8 +57,8 @@ class Organization(Base):
     country = Column(String, default="US")
     source_reliability = Column(String, default="mock")
     extraction_method = Column(String, default="mock")
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
 
 class SourceDocument(Base):
@@ -72,8 +77,8 @@ class SourceDocument(Base):
     snippet = Column(Text)
     source_reliability = Column(String, default="mock")
     license_note = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
 
 class Event(Base):
@@ -86,8 +91,8 @@ class Event(Base):
     event_date = Column(Date, nullable=False, index=True)
     congress = Column(Integer, index=True)
     source_reliability = Column(String, default="mock")
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
 
 class Claim(Base):
@@ -104,8 +109,8 @@ class Claim(Base):
     extraction_method = Column(String, default="mock")
     source_reliability = Column(String, default="mock")
     review_status = Column(String, default="unreviewed")
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
 
 class EtlSource(Base):
@@ -120,8 +125,8 @@ class EtlSource(Base):
     supports_incremental = Column(Boolean, default=False)
     last_updated_at = Column(DateTime)
     data_freshness_window = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
 
 class ApiRequestLog(Base):
@@ -134,7 +139,7 @@ class ApiRequestLog(Base):
     status_code = Column(Integer)
     duration_ms = Column(Float)
     ip_address = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc), index=True)
 
 
 class MockSeedManifest(Base):
@@ -144,4 +149,4 @@ class MockSeedManifest(Base):
     seed_version = Column(String, nullable=False)
     entity_type = Column(String, nullable=False)
     entity_count = Column(Integer, nullable=False)
-    seed_timestamp = Column(DateTime, default=datetime.utcnow)
+    seed_timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))

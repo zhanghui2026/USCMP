@@ -16,7 +16,6 @@ router = APIRouter(tags=["search"])
 @router.get("/search", response_model=SearchResult)
 def search(
     query: str = Query(..., min_length=2),
-    search_type: str = Query("keyword"),
     limit: int = Query(50, ge=1, le=100),
     db: Session = Depends(get_db),
 ):
@@ -56,6 +55,7 @@ def search(
             official_photo_url=m.official_photo_url,
             committee_tags=committee_tags,
             congress=m.congress,
+            source=m.source,
         ))
 
     # Search organizations
@@ -104,4 +104,5 @@ def search(
         organizations=org_results,
         events=event_results,
         total_count=total,
+        source="postgresql",
     )

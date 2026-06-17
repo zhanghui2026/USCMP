@@ -586,18 +586,12 @@ class EvidenceResponse(BaseModel):
 ### 3.6 搜索与对比模型
 
 ```python
-class SearchRequest(BaseModel):
-    query: str
-    search_type: str = "keyword"  # keyword, organization, industry
-    start_date: Optional[date] = None
-    end_date: Optional[date] = None
-    limit: int = 50
-
 class SearchResult(BaseModel):
     members: list[MemberSummary] = []
     organizations: list[OrganizationSummary] = []
     events: list[EventModel] = []
     total_count: int
+    source: str = "postgresql"
 
 class CompareRequest(BaseModel):
     member_ids: list[str]  # min 2

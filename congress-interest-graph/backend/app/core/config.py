@@ -65,5 +65,7 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-# Scoring weights config path
+# Scoring weights config path — reserved for future real scoring model.
+# Currently all scoring/metrics use Mock demo values with fixed baselines.
+# See app/core/scoring_weights.yaml and docs/scoring_methodology.md.
 SCORING_WEIGHTS_PATH = Path(__file__).parent / "scoring_weights.yaml"

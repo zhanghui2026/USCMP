@@ -34,7 +34,7 @@ def _build_graph_response(records, limit: int) -> GraphResponse:
                     )
             elif hasattr(value, "type"):
                 edge_type = value.type
-                edge_id = value.get("id", "")
+                edge_id = value.get("id", "") or value.element_id
                 if edge_id and edge_id not in edges_map:
                     props = dict(value.items())
                     edges_map[edge_id] = GraphEdge(

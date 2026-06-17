@@ -65,8 +65,12 @@ def test_all_mock_marked():
     gen = MockDataGenerator()
     gen.generate_all()
     for m in gen.members:
+        assert m["source"] == "mock", f"Member {m['id']} not marked as mock source"
         assert m["source_reliability"] == "mock", f"Member {m['id']} not marked as mock"
         assert m["extraction_method"] == "mock", f"Member {m['id']} not marked as mock"
+        assert m["official_ids"] == {}, f"Mock member {m['id']} official_ids should be empty"
+        assert m["latest_term_start"] is None, f"Mock member {m['id']} latest_term_start should be None"
+        assert m["latest_term_end"] is None, f"Mock member {m['id']} latest_term_end should be None"
 
     for o in gen.orgs:
         assert o["source_reliability"] == "mock", f"Org {o['id']} not marked as mock"

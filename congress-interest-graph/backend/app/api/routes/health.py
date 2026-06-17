@@ -12,13 +12,13 @@ router = APIRouter(tags=["health"])
 
 
 def _detect_data_mode() -> str:
-    """Detect whether data is mock, mixed, or real."""
+    """Detect whether data is mock, mixed, or real from members.source."""
     mock_count = 0
     real_count = 0
     try:
         db = SessionLocal()
         r = db.execute(text(
-            "SELECT source_reliability, COUNT(*) as cnt FROM claims GROUP BY source_reliability"
+            "SELECT source, COUNT(*) as cnt FROM members GROUP BY source"
         )).fetchall()
         db.close()
         for row in r:

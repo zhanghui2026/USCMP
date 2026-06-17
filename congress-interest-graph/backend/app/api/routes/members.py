@@ -63,6 +63,7 @@ def list_members(
             official_photo_url=m.official_photo_url,
             committee_tags=committee_tags[:5],
             congress=m.congress,
+            source=m.source,
         ))
 
     return MemberListResponse(
@@ -111,4 +112,8 @@ def get_member(member_id: str, db: Session = Depends(get_db)):
         china_stance_summary=member.china_stance_summary,
         controversies=member.controversies or [],
         congress=member.congress,
+        source=member.source,
+        latest_term_start=member.latest_term_start,
+        latest_term_end=member.latest_term_end,
+        official_ids=member.official_ids or {},
     )

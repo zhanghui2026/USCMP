@@ -47,6 +47,7 @@ GET /api/health
   "status": "ok",
   "postgres": "ok",
   "neo4j": "ok",
+  "data_mode": "mock",
   "version": "0.1.0",
   "timestamp": "2025-06-16T12:00:00Z"
 }
@@ -58,6 +59,7 @@ GET /api/health
   "status": "degraded",
   "postgres": "error",
   "neo4j": "ok",
+  "data_mode": "unknown",
   "version": "0.1.0",
   "timestamp": "2025-06-16T12:00:00Z"
 }
@@ -137,10 +139,12 @@ GET /api/members/{member_id}/graph
 | 参数 | 类型 | 必需 | 默认值 | 说明 |
 |------|------|------|--------|------|
 | depth | integer | No | 2 (max 2) | 查询深度 |
-| start_date | date | No | - | 起始日期过滤 |
-| end_date | date | No | - | 结束日期过滤 |
+| start_date | date | No | - | 过滤 start_date >= 此日期的关系 |
+| end_date | date | No | - | 过滤 end_date <= 此日期的关系 |
 | min_confidence | float | No | 0.0 (0.0-1.0) | 最低置信度 |
 | limit | integer | No | 200 (max 500) | 节点数量限制 |
+
+**时间过滤说明**: 缺少 `start_date` 的关系不受起始日期过滤影响；缺少 `end_date` (进行中的关系) 不受结束日期过滤影响。
 
 **Response (200)**: `GraphResponse` object
 
@@ -172,7 +176,7 @@ POST /api/graph/expand
 }
 ```
 
-**约束**: `depth` 固定为 1，不可超过；`limit` 最大 500。
+**约束**: `depth` 固定为 1，不可超过；`limit` 最大 500。时间过滤行为与议员图谱端点一致。
 
 **Response (200)**: `GraphResponse` object (仅返回新增的节点和边)
 
@@ -199,12 +203,20 @@ GET /api/search
 | 参数 | 类型 | 必需 | 说明 |
 |------|------|------|------|
 | query | string | Yes (min 2 chars) | 搜索关键词 |
-| search_type | string | No (default "keyword") | keyword, organization, industry |
-| start_date | date | No | 起始日期 |
-| end_date | date | No | 结束日期 |
 | limit | integer | No (default 50, max 100) | 结果数量 |
 
+**说明**: 当前搜索为 PostgreSQL ILIKE 关键词匹配，覆盖 members 的 canonical_name/display_name/state、organizations 的 canonical_name/industry、events 的 title。更多搜索能力（Neo4j 图搜索、按组织/行业分类搜索、日期过滤）在后续版本实现。
+
 **Response (200)**: `SearchResult` object
+```json
+{
+  "members": [...],
+  "organizations": [...],
+  "events": [...],
+  "total_count": 15,
+  "source": "postgresql"
+}
+```
 
 **Response (400)**:
 ```json
