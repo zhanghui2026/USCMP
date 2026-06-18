@@ -1,0 +1,44 @@
+{
+  "bioguide_id": "O000173",
+  "wikipedia_title": "Ilhan Omar",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q48808181",
+  "image_url": null,
+  "short_summary": "U.S. Representative for MN-5 since 2019; one of the first two Muslim women elected to Congress; first Somali-American in Congress.",
+  "birth_date": "1982-10-04",
+  "birth_place": "Mogadishu, Somalia",
+  "education": [
+    {
+      "institution": "North Dakota State University",
+      "degree": "B.A.",
+      "field": "Political Science and International Studies",
+      "year": "2011"
+    }
+  ],
+  "occupations": [
+    "Community organizer",
+    "Policy analyst",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Minnesota State Representative",
+      "organization": "Minnesota House of Representatives (60B)",
+      "start_date": "2017-01-03",
+      "end_date": "2019-01-03",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Representative",
+      "organization": "U.S. House of Representatives (MN-5)",
+      "start_date": "2019-01-03",
+      "end_date": null,
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.717936+00:00"
+  }
+}

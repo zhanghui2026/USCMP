@@ -1,0 +1,63 @@
+{
+  "bioguide_id": "M000355",
+  "wikipedia_title": "Mitch McConnell",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q199067",
+  "image_url": null,
+  "short_summary": "Senate Majority Leader (2015-2021); Senate Minority Leader (2007-2015, 2021-2025); U.S. Senator from Kentucky since 1985.",
+  "birth_date": "1942-02-20",
+  "birth_place": "Sheffield, Alabama, U.S.",
+  "education": [
+    {
+      "institution": "University of Louisville",
+      "degree": "B.A.",
+      "field": "Political Science",
+      "year": "1964"
+    },
+    {
+      "institution": "University of Kentucky College of Law",
+      "degree": "J.D.",
+      "field": "Law",
+      "year": "1967"
+    }
+  ],
+  "occupations": [
+    "Lawyer",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Jefferson County Judge/Executive",
+      "organization": "Jefferson County, Kentucky",
+      "start_date": "1977-01-01",
+      "end_date": "1984-12-31",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Senator",
+      "organization": "U.S. Senate (Kentucky)",
+      "start_date": "1985-01-03",
+      "end_date": null,
+      "appointed": false
+    },
+    {
+      "position": "Senate Majority Leader",
+      "organization": "U.S. Senate",
+      "start_date": "2015-01-03",
+      "end_date": "2021-01-20",
+      "appointed": false
+    },
+    {
+      "position": "Senate Majority Whip",
+      "organization": "U.S. Senate",
+      "start_date": "2003-01-03",
+      "end_date": "2007-01-03",
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.708887+00:00"
+  }
+}

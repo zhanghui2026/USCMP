@@ -1,0 +1,37 @@
+{
+  "bioguide_id": "C000127",
+  "wikipedia_title": "Maria Cantwell",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Maria_Cantwell",
+  "wikidata_qid": "Q22250",
+  "image_url": null,
+  "short_summary": "Maria Ellen Cantwell (born October 13, 1958) is an American politician serving as the junior United States senator from Washington since 2001. A member of the Democratic Party, she previously served in the Washington House of Representatives and the United States House of Representatives.",
+  "birth_date": "1958-10-13",
+  "birth_place": "Indianapolis, Indiana, U.S.",
+  "education": [
+    {
+      "institution": "Miami University"
+    }
+  ],
+  "occupations": [
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Member of the Washington House of Representatives (1987-1993)"
+    },
+    {
+      "position": "U.S. Representative from Washington's 1st district (1993-1995)"
+    },
+    {
+      "position": "U.S. Senator from Washington (2001-present)"
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "wikipedia_title": "Maria Cantwell",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Maria_Cantwell",
+    "retrieved_at": "2026-06-18T18:42:15.259197+00:00",
+    "wikidata_qid": "Q22250"
+  }
+}

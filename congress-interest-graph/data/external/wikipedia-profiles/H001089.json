@@ -1,0 +1,64 @@
+{
+  "bioguide_id": "H001089",
+  "wikipedia_title": "Josh Hawley",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q46648657",
+  "image_url": null,
+  "short_summary": "U.S. Senator from Missouri since 2019; previously Attorney General of Missouri (2017-2019); Yale Law graduate; clerked for Chief Justice John Roberts.",
+  "birth_date": "1979-12-31",
+  "birth_place": "Springdale, Arkansas, U.S.",
+  "education": [
+    {
+      "institution": "Stanford University",
+      "degree": "B.A.",
+      "field": "History",
+      "year": "2002"
+    },
+    {
+      "institution": "Yale Law School",
+      "degree": "J.D.",
+      "field": "Law",
+      "year": "2006"
+    }
+  ],
+  "occupations": [
+    "Lawyer",
+    "Law professor",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Law Clerk for Chief Justice John Roberts",
+      "organization": "Supreme Court of the United States",
+      "start_date": "2007-01-01",
+      "end_date": "2008-01-01",
+      "appointed": false
+    },
+    {
+      "position": "Associate Professor of Law",
+      "organization": "University of Missouri School of Law",
+      "start_date": "2008-01-01",
+      "end_date": "2015-01-01",
+      "appointed": false
+    },
+    {
+      "position": "Attorney General of Missouri",
+      "organization": "State of Missouri",
+      "start_date": "2017-01-01",
+      "end_date": "2019-01-03",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Senator",
+      "organization": "U.S. Senate (Missouri)",
+      "start_date": "2019-01-03",
+      "end_date": null,
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.720734+00:00"
+  }
+}

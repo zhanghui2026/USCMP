@@ -113,9 +113,9 @@ def import_fixture_profiles() -> dict:
         stats["members_checked"] = len(members)
 
         existing_profiles = {
-            row[0]: (row[1], row[2])
+            row[0]: (row[1], row[2], row[3])
             for row in db.query(
-                MemberProfile.bioguide_id, MemberProfile.id, MemberProfile.profile_status
+                MemberProfile.bioguide_id, MemberProfile.id, MemberProfile.profile_status, MemberProfile.source,
             ).all()
         }
 
@@ -129,13 +129,17 @@ def import_fixture_profiles() -> dict:
                 stats["no_match"] += 1
                 continue
 
-            # Check if existing profile is already available from live Wikipedia
+            # Protection: skip live Wikipedia profiles; allow upgrading summary_only and wikipedia_snapshot
             existing_info = existing_profiles.get(member.bioguide_id)
             if existing_info:
-                _, existing_status = existing_info
-                if existing_status == "available" and fixture.get("source") != "wikipedia":
+                _, existing_status, existing_source = existing_info
+                if existing_status == "available" and existing_source == "wikipedia":
                     stats["skipped_already_available"] += 1
-                    logger.debug(f"  Skipped (already available): {member.display_name}")
+                    logger.debug(f"  Skipped (already available from live Wikipedia): {member.display_name}")
+                    continue
+                if existing_status == "available" and existing_source == "fixture":
+                    stats["skipped_already_available"] += 1
+                    logger.debug(f"  Skipped (already available from fixture): {member.display_name}")
                     continue
 
             # Fetch profile data through adapter

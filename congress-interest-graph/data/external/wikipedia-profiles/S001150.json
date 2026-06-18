@@ -1,0 +1,71 @@
+{
+  "bioguide_id": "S001150",
+  "wikipedia_title": "Adam Schiff",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q351031",
+  "image_url": null,
+  "short_summary": "U.S. Senator from California since 2024; previously U.S. Representative (CA-28, CA-30, 2001-2024); Chair of House Intelligence Committee (2019-2023); lead impeachment manager.",
+  "birth_date": "1960-06-22",
+  "birth_place": "Framingham, Massachusetts, U.S.",
+  "education": [
+    {
+      "institution": "Stanford University",
+      "degree": "B.A.",
+      "field": "Political Science",
+      "year": "1982"
+    },
+    {
+      "institution": "Harvard Law School",
+      "degree": "J.D.",
+      "field": "Law",
+      "year": "1985"
+    }
+  ],
+  "occupations": [
+    "Lawyer",
+    "Prosecutor",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Assistant U.S. Attorney",
+      "organization": "U.S. Attorney's Office, Central District of California",
+      "start_date": "1987-01-01",
+      "end_date": "1993-01-01",
+      "appointed": true
+    },
+    {
+      "position": "California State Senator",
+      "organization": "California State Senate (21st District)",
+      "start_date": "1996-12-01",
+      "end_date": "2000-12-01",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Representative",
+      "organization": "U.S. House of Representatives (CA-28/CA-30)",
+      "start_date": "2001-01-03",
+      "end_date": "2024-12-08",
+      "appointed": false
+    },
+    {
+      "position": "Chair, House Intelligence Committee",
+      "organization": "U.S. House of Representatives",
+      "start_date": "2019-01-03",
+      "end_date": "2023-01-03",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Senator",
+      "organization": "U.S. Senate (California)",
+      "start_date": "2024-12-09",
+      "end_date": null,
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.711811+00:00"
+  }
+}

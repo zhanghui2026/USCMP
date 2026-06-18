@@ -1,0 +1,51 @@
+{
+  "bioguide_id": "O000172",
+  "wikipedia_title": "Alexandria Ocasio-Cortez",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q55223040",
+  "image_url": null,
+  "short_summary": "U.S. Representative for NY-14 since 2019; youngest woman ever elected to Congress; member of 'The Squad'.",
+  "birth_date": "1989-10-13",
+  "birth_place": "Bronx, New York, U.S.",
+  "education": [
+    {
+      "institution": "Boston University",
+      "degree": "B.A.",
+      "field": "International Relations and Economics",
+      "year": "2011"
+    }
+  ],
+  "occupations": [
+    "Educator",
+    "Community organizer",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Educational Director",
+      "organization": "National Hispanic Institute",
+      "start_date": "2011-01-01",
+      "end_date": "2012-01-01",
+      "appointed": false
+    },
+    {
+      "position": "Bartender and Waitress",
+      "organization": "Flats Fix Taqueria",
+      "start_date": "2017-01-01",
+      "end_date": "2018-01-01",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Representative",
+      "organization": "U.S. House of Representatives (NY-14)",
+      "start_date": "2019-01-03",
+      "end_date": null,
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.719330+00:00"
+  }
+}

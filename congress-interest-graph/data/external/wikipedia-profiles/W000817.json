@@ -1,0 +1,77 @@
+{
+  "bioguide_id": "W000817",
+  "wikipedia_title": "Elizabeth Warren",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q434706",
+  "image_url": null,
+  "short_summary": "U.S. Senator from Massachusetts since 2013; previously Harvard Law professor and consumer protection advocate; architect of the Consumer Financial Protection Bureau.",
+  "birth_date": "1949-06-22",
+  "birth_place": "Oklahoma City, Oklahoma, U.S.",
+  "education": [
+    {
+      "institution": "George Washington University",
+      "degree": "Attended",
+      "field": null,
+      "year": "1968"
+    },
+    {
+      "institution": "University of Houston",
+      "degree": "B.S.",
+      "field": "Speech Pathology and Audiology",
+      "year": "1970"
+    },
+    {
+      "institution": "Rutgers Law School",
+      "degree": "J.D.",
+      "field": "Law",
+      "year": "1976"
+    }
+  ],
+  "occupations": [
+    "Law professor",
+    "Author",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Professor of Law",
+      "organization": "Harvard Law School",
+      "start_date": "1995-01-01",
+      "end_date": "2012-12-31",
+      "appointed": false
+    },
+    {
+      "position": "Professor of Law",
+      "organization": "University of Pennsylvania Law School",
+      "start_date": "1987-01-01",
+      "end_date": "1995-01-01",
+      "appointed": false
+    },
+    {
+      "position": "Special Advisor for the CFPB",
+      "organization": "U.S. Department of the Treasury",
+      "start_date": "2010-09-17",
+      "end_date": "2011-07-31",
+      "appointed": true
+    },
+    {
+      "position": "Chair, Congressional Oversight Panel for TARP",
+      "organization": "U.S. Congress",
+      "start_date": "2008-11-01",
+      "end_date": "2011-01-01",
+      "appointed": true
+    },
+    {
+      "position": "U.S. Senator",
+      "organization": "U.S. Senate (Massachusetts)",
+      "start_date": "2013-01-03",
+      "end_date": null,
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.705535+00:00"
+  }
+}

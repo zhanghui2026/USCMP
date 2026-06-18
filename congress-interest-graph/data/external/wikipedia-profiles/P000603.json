@@ -1,0 +1,50 @@
+{
+  "bioguide_id": "P000603",
+  "wikipedia_title": "Rand Paul",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q375520",
+  "image_url": null,
+  "short_summary": "U.S. Senator from Kentucky since 2011; ophthalmologist; son of former Rep. Ron Paul.",
+  "birth_date": "1963-01-07",
+  "birth_place": "Pittsburgh, Pennsylvania, U.S.",
+  "education": [
+    {
+      "institution": "Baylor University",
+      "degree": "Attended",
+      "field": "Biology",
+      "year": "1984"
+    },
+    {
+      "institution": "Duke University School of Medicine",
+      "degree": "M.D.",
+      "field": "Medicine",
+      "year": "1988"
+    }
+  ],
+  "occupations": [
+    "Ophthalmologist",
+    "Physician",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Ophthalmologist",
+      "organization": "Private Practice, Bowling Green, Kentucky",
+      "start_date": "1993-01-01",
+      "end_date": "2010-12-31",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Senator",
+      "organization": "U.S. Senate (Kentucky)",
+      "start_date": "2011-01-03",
+      "end_date": null,
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.716318+00:00"
+  }
+}

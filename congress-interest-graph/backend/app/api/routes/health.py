@@ -128,3 +128,58 @@ def profile_statistics():
     except Exception:
         pass
     return stats
+
+
+@router.get("/stats/profiles/current-coverage")
+def current_profile_coverage():
+    """Return profile coverage statistics for current members only."""
+    coverage = {
+        "total_current_members": 0,
+        "with_profile": 0,
+        "without_profile": 0,
+        "available": 0,
+        "partial": 0,
+        "summary_only": 0,
+        "available_pct": 0.0,
+        "partial_pct": 0.0,
+        "summary_only_pct": 0.0,
+        "enriched_pct": 0.0,
+    }
+    try:
+        db = SessionLocal()
+        total_current = db.execute(text(
+            "SELECT COUNT(*) FROM members WHERE is_current = TRUE"
+        )).fetchone()[0]
+        coverage["total_current_members"] = total_current
+
+        counts = db.execute(text("""
+            SELECT mp.profile_status, COUNT(*)
+            FROM member_profiles mp
+            INNER JOIN members m ON mp.bioguide_id = m.bioguide_id
+            WHERE m.is_current = TRUE
+            GROUP BY mp.profile_status
+        """)).fetchall()
+
+        for status, cnt in counts:
+            if status == "available":
+                coverage["available"] = cnt
+            elif status == "partial":
+                coverage["partial"] = cnt
+            elif status == "summary_only":
+                coverage["summary_only"] = cnt
+
+        coverage["with_profile"] = coverage["available"] + coverage["partial"] + coverage["summary_only"]
+        coverage["without_profile"] = total_current - coverage["with_profile"]
+
+        if total_current > 0:
+            coverage["available_pct"] = round(coverage["available"] / total_current * 100, 1)
+            coverage["partial_pct"] = round(coverage["partial"] / total_current * 100, 1)
+            coverage["summary_only_pct"] = round(coverage["summary_only"] / total_current * 100, 1)
+            coverage["enriched_pct"] = round(
+                (coverage["available"] + coverage["partial"]) / total_current * 100, 1
+            )
+
+        db.close()
+    except Exception:
+        pass
+    return coverage

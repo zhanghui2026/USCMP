@@ -1,0 +1,78 @@
+{
+  "bioguide_id": "G000359",
+  "wikipedia_title": "Lindsey Graham",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q22248",
+  "image_url": null,
+  "short_summary": "U.S. Senator from South Carolina since 2003; previously U.S. Representative (SC-3, 1995-2003); Air Force JAG officer.",
+  "birth_date": "1955-07-09",
+  "birth_place": "Central, South Carolina, U.S.",
+  "education": [
+    {
+      "institution": "University of South Carolina",
+      "degree": "B.A.",
+      "field": "Psychology",
+      "year": "1977"
+    },
+    {
+      "institution": "University of South Carolina School of Law",
+      "degree": "J.D.",
+      "field": "Law",
+      "year": "1981"
+    }
+  ],
+  "occupations": [
+    "Lawyer",
+    "Military officer",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Judge Advocate",
+      "organization": "U.S. Air Force (JAG Corps)",
+      "start_date": "1982-01-01",
+      "end_date": "1988-01-01",
+      "appointed": false
+    },
+    {
+      "position": "South Carolina State Representative",
+      "organization": "South Carolina House of Representatives (2nd District)",
+      "start_date": "1993-01-01",
+      "end_date": "1995-01-01",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Representative",
+      "organization": "U.S. House of Representatives (SC-3)",
+      "start_date": "1995-01-03",
+      "end_date": "2003-01-03",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Senator",
+      "organization": "U.S. Senate (South Carolina)",
+      "start_date": "2003-01-03",
+      "end_date": null,
+      "appointed": false
+    },
+    {
+      "position": "Chair, Senate Judiciary Committee",
+      "organization": "U.S. Senate",
+      "start_date": "2019-01-03",
+      "end_date": "2021-01-20",
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [
+    {
+      "branch": "U.S. Air Force",
+      "rank": "Colonel",
+      "years": "1982-2015",
+      "unit": "JAG Corps / Air Force Reserve"
+    }
+  ],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.707355+00:00"
+  }
+}

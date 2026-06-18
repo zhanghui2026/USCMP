@@ -1,0 +1,64 @@
+{
+  "bioguide_id": "J000299",
+  "wikipedia_title": "Mike Johnson (Louisiana politician)",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q28477149",
+  "image_url": null,
+  "short_summary": "Speaker of the U.S. House of Representatives; U.S. Representative for LA-4 since 2017.",
+  "birth_date": "1972-01-30",
+  "birth_place": "Shreveport, Louisiana, U.S.",
+  "education": [
+    {
+      "institution": "Louisiana State University",
+      "degree": "B.S.",
+      "field": "Business Administration",
+      "year": "1995"
+    },
+    {
+      "institution": "Louisiana State University Law Center",
+      "degree": "J.D.",
+      "field": "Law",
+      "year": "1998"
+    }
+  ],
+  "occupations": [
+    "Lawyer",
+    "Politician",
+    "Radio host"
+  ],
+  "prior_positions": [
+    {
+      "position": "Louisiana State Representative",
+      "organization": "Louisiana House of Representatives (8th District)",
+      "start_date": "2015-02-01",
+      "end_date": "2017-01-03",
+      "appointed": false
+    },
+    {
+      "position": "U.S. Representative",
+      "organization": "U.S. House of Representatives (LA-4)",
+      "start_date": "2017-01-03",
+      "end_date": null,
+      "appointed": false
+    },
+    {
+      "position": "Chair, Republican Study Committee",
+      "organization": "U.S. House of Representatives",
+      "start_date": "2019-01-01",
+      "end_date": "2021-01-01",
+      "appointed": false
+    },
+    {
+      "position": "Speaker of the House",
+      "organization": "U.S. House of Representatives",
+      "start_date": "2023-10-25",
+      "end_date": null,
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:42:15.267632+00:00"
+  }
+}

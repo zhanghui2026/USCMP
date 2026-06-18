@@ -1,0 +1,43 @@
+{
+  "bioguide_id": "P000197",
+  "wikipedia_title": "Nancy Pelosi",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Nancy_Pelosi",
+  "wikidata_qid": "Q170581",
+  "image_url": null,
+  "short_summary": "Nancy Patricia Pelosi (born March 26, 1940) is an American politician who served as the 52nd speaker of the United States House of Representatives from 2007 to 2011 and again from 2019 to 2023. A member of the Democratic Party, she was the first woman elected speaker and has represented California's 11th congressional district (previously the 5th, 8th, and 12th) since 1987.",
+  "birth_date": "1940-03-26",
+  "birth_place": "Baltimore, Maryland, U.S.",
+  "education": [
+    {
+      "institution": "Trinity Washington University"
+    }
+  ],
+  "occupations": [
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Speaker of the U.S. House of Representatives (2007-2011, 2019-2023)"
+    },
+    {
+      "position": "House Minority Leader (2003-2007, 2011-2019)"
+    },
+    {
+      "position": "House Minority Whip (2002-2003)"
+    },
+    {
+      "position": "U.S. Representative from California (1987-present)"
+    },
+    {
+      "position": "Chair of the California Democratic Party (1981-1983)"
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "wikipedia_title": "Nancy Pelosi",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Nancy_Pelosi",
+    "retrieved_at": "2026-06-18T18:42:15.261882+00:00",
+    "wikidata_qid": "Q170581"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "bioguide_id": "W000805",
+  "wikipedia_title": "Mark Warner",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Mark_Warner",
+  "wikidata_qid": "Q453893",
+  "image_url": null,
+  "short_summary": "Mark Robert Warner (born December 15, 1954) is an American businessman and politician serving as the senior United States senator from Virginia, a seat he has held since 2009. A member of the Democratic Party, Warner previously served as the 69th governor of Virginia from 2002 to 2006.",
+  "birth_date": "1954-12-15",
+  "birth_place": "Indianapolis, Indiana, U.S.",
+  "education": [
+    {
+      "institution": "George Washington University"
+    },
+    {
+      "institution": "Harvard University"
+    }
+  ],
+  "occupations": [
+    "Businessman",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "Governor of Virginia (2002-2006)"
+    },
+    {
+      "position": "U.S. Senator from Virginia (2009-present)"
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "wikipedia_title": "Mark Warner",
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Mark_Warner",
+    "retrieved_at": "2026-06-18T18:42:15.251059+00:00",
+    "wikidata_qid": "Q453893"
+  }
+}

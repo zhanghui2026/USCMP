@@ -1,0 +1,70 @@
+{
+  "bioguide_id": "S000148",
+  "wikipedia_title": "Chuck Schumer",
+  "wikipedia_url": null,
+  "wikidata_qid": "Q380900",
+  "image_url": null,
+  "short_summary": "Senate Majority Leader; U.S. Senator from New York since 1999; previously U.S. Representative for NY-9 and NY-10 (1981-1999).",
+  "birth_date": "1950-11-23",
+  "birth_place": "Brooklyn, New York, U.S.",
+  "education": [
+    {
+      "institution": "Harvard University",
+      "degree": "B.A.",
+      "field": "Social Studies",
+      "year": "1971"
+    },
+    {
+      "institution": "Harvard Law School",
+      "degree": "J.D.",
+      "field": "Law",
+      "year": "1974"
+    }
+  ],
+  "occupations": [
+    "Lawyer",
+    "Politician"
+  ],
+  "prior_positions": [
+    {
+      "position": "U.S. Representative",
+      "organization": "U.S. House of Representatives (NY-9, NY-10)",
+      "start_date": "1981-01-03",
+      "end_date": "1999-01-03",
+      "appointed": false
+    },
+    {
+      "position": "New York State Assembly Member",
+      "organization": "New York State Assembly (45th District)",
+      "start_date": "1975-01-01",
+      "end_date": "1980-12-31",
+      "appointed": false
+    },
+    {
+      "position": "Senate Democratic Leader",
+      "organization": "U.S. Senate",
+      "start_date": "2017-01-03",
+      "end_date": null,
+      "appointed": false
+    },
+    {
+      "position": "Senate Majority Leader",
+      "organization": "U.S. Senate",
+      "start_date": "2021-01-20",
+      "end_date": "2025-01-03",
+      "appointed": false
+    },
+    {
+      "position": "Senate Minority Leader",
+      "organization": "U.S. Senate",
+      "start_date": "2017-01-03",
+      "end_date": "2021-01-20",
+      "appointed": false
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "retrieved_at": "2026-06-18T18:23:47.713219+00:00"
+  }
+}
