@@ -73,3 +73,8 @@ export async function getMemberProfile(memberId: string): Promise<MemberProfileR
   const { data } = await api.get(`/members/${memberId}/profile`);
   return data;
 }
+
+export async function getMemberCircles(memberId: string): Promise<import('./types').CircleResponse> {
+  const { data } = await api.get(`/members/${memberId}/circles`);
+  return data;
+}

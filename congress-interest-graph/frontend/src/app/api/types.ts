@@ -7,6 +7,7 @@ export interface MemberSummary {
   state?: string;
   district?: string;
   official_photo_url?: string;
+  image_url?: string;
   committee_tags: string[];
   congress?: number;
   source: string;
@@ -214,6 +215,24 @@ export interface ApiError {
   message: string;
   details: Record<string, unknown>;
   request_id: string;
+}
+
+export interface CircleMember {
+  member_id: string;
+  display_name: string;
+  party?: string;
+  state?: string;
+  shared_via: string;
+}
+
+export interface CircleCategory {
+  category: string;
+  label: string;
+  members: CircleMember[];
+}
+
+export interface CircleResponse {
+  categories: CircleCategory[];
 }
 
 export interface MemberProfileResponse {

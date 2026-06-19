@@ -7,6 +7,7 @@ interface Props {
   onDoubleClickNode: (nodeId: string) => void;
   onEdgeClick: (claimId: string) => void;
   height?: string | number;
+  personImages?: Record<string, string>;
 }
 
 const EDGE_COLORS: Record<string, string> = {
@@ -49,7 +50,7 @@ const NODE_SHAPES: Record<string, string> = {
   ProfileSource: 'hexagon',
 };
 
-export default function GraphCanvas({ graph, onDoubleClickNode, onEdgeClick, height = 600 }: Props) {
+export default function GraphCanvas({ graph, onDoubleClickNode, onEdgeClick, height = 600, personImages = {} }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const g6Ref = useRef<Graph | null>(null);
 
@@ -65,19 +66,31 @@ export default function GraphCanvas({ graph, onDoubleClickNode, onEdgeClick, hei
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const g6Data: any = {
-      nodes: graph.nodes.map((n) => ({
-        id: n.id,
-        data: {
-          label: sanitizeGraphLabel(getNodeLabelRaw(n)),
-          nodeType: n.label,
-          color: NODE_COLORS[n.label] || '#8c8c8c',
-          size: getNodeSize(n),
-        },
-        style: {
-          fill: NODE_COLORS[n.label] || '#8c8c8c',
-          size: getNodeSize(n),
-        },
-      })),
+      nodes: graph.nodes.map((n) => {
+        const imgUrl = n.label === 'Person' ? (personImages[n.id] || null) : null;
+        return {
+          id: n.id,
+          data: {
+            label: sanitizeGraphLabel(getNodeLabelRaw(n)),
+            nodeType: n.label,
+            color: NODE_COLORS[n.label] || '#8c8c8c',
+            size: getNodeSize(n),
+            imgUrl,
+          },
+          style: {
+            fill: imgUrl ? '#0a0e17' : (NODE_COLORS[n.label] || '#8c8c8c'),
+            size: getNodeSize(n),
+            ...(imgUrl ? {
+              icon: {
+                type: 'image',
+                src: imgUrl,
+                width: getNodeSize(n) - 4,
+                height: getNodeSize(n) - 4,
+              },
+            } : {}),
+          },
+        };
+      }),
       edges: graph.edges.map((e) => {
         const isLowConfidence = e.confidence_score !== undefined && e.confidence_score < 0.5;
         return {

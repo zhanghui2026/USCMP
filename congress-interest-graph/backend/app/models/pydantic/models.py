@@ -21,6 +21,7 @@ class MemberSummary(BaseModel):
     state: Optional[str] = None
     district: Optional[str] = None
     official_photo_url: Optional[str] = None
+    image_url: Optional[str] = None
     committee_tags: list[str] = Field(default_factory=list)
     congress: Optional[int] = None
     source: str = "mock"
@@ -269,6 +270,24 @@ class ETLRunResponse(BaseModel):
     records_total: int
     started_at: str | None = None
     completed_at: str | None = None
+
+
+class CircleMember(BaseModel):
+    member_id: str
+    display_name: str
+    party: Optional[str] = None
+    state: Optional[str] = None
+    shared_via: str
+
+
+class CircleCategory(BaseModel):
+    category: str
+    label: str
+    members: list[CircleMember] = Field(default_factory=list)
+
+
+class CircleResponse(BaseModel):
+    categories: list[CircleCategory] = Field(default_factory=list)
 
 
 class MemberProfileResponse(BaseModel):

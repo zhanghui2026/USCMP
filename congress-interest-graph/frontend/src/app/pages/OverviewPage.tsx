@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Row, Col, Card, Input, Select, Slider, Tag, Spin, Empty } from 'antd';
+import { Row, Col, Card, Input, Select, Tag, Spin, Empty } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { getMembers } from '../api/client';
 import type { MemberSummary } from '../api/types';
 import { useAppStore } from '../store';
 import { getPartyColor } from '../constants';
+import MemberAvatar from '../components/MemberAvatar';
 
 const { Option } = Select;
 
@@ -109,14 +110,7 @@ export default function OverviewPage() {
                   style={{ cursor: 'pointer', borderTop: `3px solid ${getPartyColor(m.party)}` }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                    <div style={{
-                      width: 32, height: 32, borderRadius: '50%',
-                      background: getPartyColor(m.party),
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: '#fff', fontWeight: 700, fontSize: 14,
-                    }}>
-                      {m.canonical_name.charAt(0)}
-                    </div>
+                    <MemberAvatar image_url={m.image_url} display_name={m.display_name} party={m.party} size={32} />
                     <div>
                       <div style={{ fontWeight: 600, fontSize: 13, lineHeight: 1.2 }}>{m.display_name}</div>
                       <div style={{ fontSize: 11, color: '#9ca3af' }}>

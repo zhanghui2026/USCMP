@@ -8,7 +8,7 @@ from app.db.neo4j import run_cypher
 from app.models.sqlalchemy.models import Member, MemberProfile
 from app.models.pydantic.models import (
     MemberSummary, MemberDetail, MemberListResponse, CommitteeMembership,
-    MemberProfileResponse,
+    MemberProfileResponse, CircleResponse, CircleCategory, CircleMember,
 )
 from app.core.errors import NotFoundError
 
@@ -64,6 +64,18 @@ def list_members(
     total = query.count()
     members = query.offset(skip).limit(limit).all()
 
+    profile_map: dict[str, str | None] = {}
+    member_ids = [m.id for m in members]
+    if member_ids:
+        try:
+            profiles = db.query(MemberProfile.member_id, MemberProfile.image_url).filter(
+                MemberProfile.member_id.in_(member_ids),
+                MemberProfile.image_url.isnot(None),
+            ).all()
+            profile_map = {p.member_id: p.image_url for p in profiles if hasattr(p, 'member_id')}
+        except Exception:
+            profile_map = {}
+
     summaries = []
     for m in members:
         committee_tags = []
@@ -81,6 +93,7 @@ def list_members(
             state=m.state,
             district=m.district,
             official_photo_url=m.official_photo_url,
+            image_url=profile_map.get(m.id),
             committee_tags=committee_tags[:5],
             congress=m.congress,
             source=m.source,
@@ -183,3 +196,59 @@ def get_member_profile(member_id: str, db: Session = Depends(get_db)):
         last_updated=profile.last_updated.isoformat() if profile.last_updated else None,
         profile_sources=profile.profile_sources or {},
     )
+
+
+CATEGORY_MAP = {
+    "EducationInstitution": ("education", "教育圈层", "EDUCATED_AT"),
+    "Committee": ("committee", "委员会圈层", "ASSIGNED_TO"),
+    "State": ("state", "州圈层", "REPRESENTS_STATE"),
+    "Party": ("party", "党派圈层", "MEMBER_OF_PARTY"),
+    "Position": ("occupation", "职业圈层", "HELD_POSITION"),
+    "Employer": ("employer", "任职机构圈层", "EMPLOYED_BY"),
+}
+
+
+@router.get("/members/{member_id}/circles", response_model=CircleResponse)
+def get_member_circles(member_id: str):
+    cypher = """
+    MATCH (m1:Person {id: $mid})-[r1]-(entity)-[r2]-(m2:Person)
+    WHERE m1.id <> m2.id
+    RETURN DISTINCT m2.id AS member_id,
+           m2.display_name AS display_name,
+           m2.party AS party,
+           m2.state AS state,
+           labels(entity)[0] AS entity_type,
+           entity.display_name AS shared_via,
+           type(r1) AS rel_type
+    LIMIT 500
+    """
+    results = run_cypher(cypher, {"mid": member_id})
+    if not results:
+        return CircleResponse()
+
+    by_type: dict[str, list[dict]] = {}
+    for row in results:
+        et = row.get("entity_type", "")
+        if et not in CATEGORY_MAP:
+            continue
+        cat_key, _, _ = CATEGORY_MAP[et]
+        entry = {
+            "member_id": row["member_id"],
+            "display_name": row["display_name"],
+            "party": row.get("party"),
+            "state": row.get("state"),
+            "shared_via": row.get("shared_via", ""),
+        }
+        by_type.setdefault(cat_key, []).append(entry)
+
+    categories = []
+    for cat_key, cat_label, _ in CATEGORY_MAP.values():
+        members_data = by_type.get(cat_key, [])
+        if members_data:
+            categories.append(CircleCategory(
+                category=cat_key,
+                label=cat_label,
+                members=[CircleMember(**m) for m in members_data],
+            ))
+
+    return CircleResponse(categories=categories)
