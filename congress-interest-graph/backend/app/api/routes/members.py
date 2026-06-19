@@ -12,6 +12,21 @@ from app.models.pydantic.models import (
 )
 from app.core.errors import NotFoundError
 
+from typing import Any
+
+
+
+def _normalize_career_highlights(raw: list | None) -> list[dict]:
+    if not raw:
+        return []
+    results: list[dict[str, Any]] = []
+    for item in raw:
+        if isinstance(item, dict):
+            results.append(item)
+        elif isinstance(item, str):
+            results.append({"title": item})
+    return results
+
 router = APIRouter(tags=["members"])
 
 
@@ -156,7 +171,7 @@ def get_member_profile(member_id: str, db: Session = Depends(get_db)):
         birth_place=profile.birth_place,
         education=profile.education or [],
         occupations=profile.occupations or [],
-        career_highlights=profile.career_highlights or [],
+        career_highlights=_normalize_career_highlights(profile.career_highlights),
         prior_positions=profile.prior_positions or [],
         military_service=profile.military_service or [],
         employers=profile.employers or [],

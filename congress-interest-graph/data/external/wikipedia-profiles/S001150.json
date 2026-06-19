@@ -1,71 +1,31 @@
 {
   "bioguide_id": "S001150",
   "wikipedia_title": "Adam Schiff",
-  "wikipedia_url": null,
-  "wikidata_qid": "Q351031",
-  "image_url": null,
-  "short_summary": "U.S. Senator from California since 2024; previously U.S. Representative (CA-28, CA-30, 2001-2024); Chair of House Intelligence Committee (2019-2023); lead impeachment manager.",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Adam_Schiff",
+  "wikidata_qid": "Q350843",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Schiff_Adam_119th_Congress.jpg",
+  "short_summary": "Adam Bennett Schiff ( SHIFF; born June 22, 1960) is an American lawyer and politician serving as the junior United States senator from California, a seat he has held since 2024. A member of the Democratic Party, Schiff served in the United States House of Representatives from 2001 to 2024 and in the California State Senate from 1996 to 2000. Before being elected to public office, Schiff was a law clerk, an assistant United States attorney from 1987 to 1993, and an unsuccessful candidate for California State Assembly in 1994. \nIn the House, Schiff sat on the Intelligence Committee beginning in 2008; he became the ranking member in 2015 and chaired it from 2019 until Republicans retook control of the House in 2023. He previously served on the House Foreign Affairs Committee. Schiff was the lead impeachment manager in the first impeachment trial of President Donald Trump. He had previously served as the joint-lead impeachment manager in two other judicial impeachment trials.\nSchiff was elected to the Senate in 2024, succeeding Laphonza Butler. He defeated fellow Democratic U.S. representatives Katie Porter and Barbara Lee in the primary and Republican Steve Garvey in the general election.",
   "birth_date": "1960-06-22",
   "birth_place": "Framingham, Massachusetts, U.S.",
-  "education": [
-    {
-      "institution": "Stanford University",
-      "degree": "B.A.",
-      "field": "Political Science",
-      "year": "1982"
-    },
-    {
-      "institution": "Harvard Law School",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1985"
-    }
-  ],
-  "occupations": [
-    "Lawyer",
-    "Prosecutor",
-    "Politician"
-  ],
+  "education": [],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Assistant U.S. Attorney",
-      "organization": "U.S. Attorney's Office, Central District of California",
-      "start_date": "1987-01-01",
-      "end_date": "1993-01-01",
-      "appointed": true
+      "position": "Chair of the House Intelligence Committee",
+      "start_date": "January 3, 2019",
+      "end_date": "January 3, 2023"
     },
     {
-      "position": "California State Senator",
-      "organization": "California State Senate (21st District)",
-      "start_date": "1996-12-01",
-      "end_date": "2000-12-01",
-      "appointed": false
-    },
-    {
-      "position": "U.S. Representative",
-      "organization": "U.S. House of Representatives (CA-28/CA-30)",
-      "start_date": "2001-01-03",
-      "end_date": "2024-12-08",
-      "appointed": false
-    },
-    {
-      "position": "Chair, House Intelligence Committee",
-      "organization": "U.S. House of Representatives",
-      "start_date": "2019-01-03",
-      "end_date": "2023-01-03",
-      "appointed": false
-    },
-    {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (California)",
-      "start_date": "2024-12-09",
-      "end_date": null,
-      "appointed": false
+      "position": "Ranking Member of the House Intelligence Committee",
+      "start_date": "January 3, 2015",
+      "end_date": "January 3, 2019"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.711811+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Adam_Schiff",
+    "wikidata": "https://www.wikidata.org/wiki/Q350843",
+    "wikidata_qid": "Q350843"
   }
 }

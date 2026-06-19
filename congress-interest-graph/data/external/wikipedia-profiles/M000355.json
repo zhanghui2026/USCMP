@@ -1,63 +1,20 @@
 {
   "bioguide_id": "M000355",
   "wikipedia_title": "Mitch McConnell",
-  "wikipedia_url": null,
-  "wikidata_qid": "Q199067",
-  "image_url": null,
-  "short_summary": "Senate Majority Leader (2015-2021); Senate Minority Leader (2007-2015, 2021-2025); U.S. Senator from Kentucky since 1985.",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Mitch_McConnell",
+  "wikidata_qid": "Q355522",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Mitch_McConnell_2016_official_photo_%281%29_%28cropped%29.jpg_%3C%21--_Do_not_change_without_consensus._--%3E",
+  "short_summary": "Addison Mitchell  McConnell III ( mə-KON-əl; born February 20, 1942) is an American Republican Party politician and attorney serving as the senior United States senator from Kentucky, a seat he has held since 1985. McConnell is in his seventh Senate term and is the longest-serving senator in Kentucky history. He served from 2007 to 2025 as the leader of the Senate Republican Conference, including two stints as minority leader (2007 to 2015 and 2021 to 2025), and was majority leader from 2015 to 2021, making him the longest-serving Senate party leader in U.S. history.\nMcConnell holds conservative political positions, although he was known as a pragmatist and a moderate Republican early in his political career. He led opposition to stricter campaign finance laws, culminating in the U.S. Supreme Court decision Citizens United v. FEC, which partially overturned the Bipartisan Campaign Reform Act (McCain-Feingold) in 2010. McConnell worked to withhold Republican support for major presidential initiatives during the Obama administration, making frequent use of the filibuster, and blocked many of President Barack Obama's judicial nominees, including Supreme Court nominee Merrick Garland.\nDuring the first Trump administration, the Senate Republican majority under McConnell's leadership passed the Tax Cuts and Jobs Act of 2017, the Economic Growth, Regulatory Relief and Consumer Protection Act in 2018, the First Step Act, and the Great American Outdoors Act, and confirmed a record number of federal appeals court judges during a president's first two years.  McConnell invoked the nuclear option to eliminate the 60-vote requirement to end a filibuster for Supreme Court nominations, after his predecessor Harry Reid had eliminated the filibuster for all other presidential nominations; Trump subsequently won Supreme Court confirmation battles over Neil Gorsuch, Brett Kavanaugh and Amy Coney Barrett. While supportive of most of Trump's domestic and foreign policies, McConnell crit",
   "birth_date": "1942-02-20",
   "birth_place": "Sheffield, Alabama, U.S.",
-  "education": [
-    {
-      "institution": "University of Louisville",
-      "degree": "B.A.",
-      "field": "Political Science",
-      "year": "1964"
-    },
-    {
-      "institution": "University of Kentucky College of Law",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1967"
-    }
-  ],
-  "occupations": [
-    "Lawyer",
-    "Politician"
-  ],
-  "prior_positions": [
-    {
-      "position": "Jefferson County Judge/Executive",
-      "organization": "Jefferson County, Kentucky",
-      "start_date": "1977-01-01",
-      "end_date": "1984-12-31",
-      "appointed": false
-    },
-    {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (Kentucky)",
-      "start_date": "1985-01-03",
-      "end_date": null,
-      "appointed": false
-    },
-    {
-      "position": "Senate Majority Leader",
-      "organization": "U.S. Senate",
-      "start_date": "2015-01-03",
-      "end_date": "2021-01-20",
-      "appointed": false
-    },
-    {
-      "position": "Senate Majority Whip",
-      "organization": "U.S. Senate",
-      "start_date": "2003-01-03",
-      "end_date": "2007-01-03",
-      "appointed": false
-    }
-  ],
+  "education": [],
+  "occupations": [],
+  "prior_positions": [],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.708887+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Mitch_McConnell",
+    "wikidata": "https://www.wikidata.org/wiki/Q355522",
+    "wikidata_qid": "Q355522"
   }
 }

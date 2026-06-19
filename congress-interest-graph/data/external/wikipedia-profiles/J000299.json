@@ -1,64 +1,40 @@
 {
   "bioguide_id": "J000299",
-  "wikipedia_title": "Mike Johnson (Louisiana politician)",
-  "wikipedia_url": null,
-  "wikidata_qid": "Q28477149",
-  "image_url": null,
-  "short_summary": "Speaker of the U.S. House of Representatives; U.S. Representative for LA-4 since 2017.",
+  "wikipedia_title": "Mike Johnson",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Mike_Johnson",
+  "wikidata_qid": "Q19880665",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Speaker_Mike_Johnson_Official_Portrait_%28cropped%29%28b%29.jpg",
+  "short_summary": "James Michael Johnson (born January 30, 1972) is an American lawyer and politician serving as the 56th speaker of the United States House of Representatives since 2023. A member of the Republican Party, he is in his fifth House term, having represented Louisiana's 4th congressional district since 2017.\nJohnson is a graduate of the Paul M. Hebert Law Center at Louisiana State University. Before entering politics, he worked as an attorney in private practice and for the Alliance Defending Freedom (ADF), a conservative Christian legal advocacy group. Johnson sat on the Ethics and Religious Liberty Commission of the Southern Baptist Convention between 2004 and 2012.\nJohnson's political career began when he was elected to the Louisiana House of Representatives in 2015; he served in that body until 2017. He was first elected to represent Louisiana's 4th congressional district in 2016. During his time in Congress, he contested the results of the 2020 presidential election on the House floor and in court. A social conservative, Johnson supported bills to ban abortion nationwide. Johnson chaired the Republican Study Committee, the largest caucus of conservatives in Congress, from 2019 to 2021. He was vice chair of the House Republican Conference from 2021 to 2023.\nOn October 25, 2023, after Kevin McCarthy was ousted as speaker of the House, Johnson was elected to replace him. He was narrowly reelected to a full term as speaker in 2025.",
   "birth_date": "1972-01-30",
   "birth_place": "Shreveport, Louisiana, U.S.",
   "education": [
     {
-      "institution": "Louisiana State University",
-      "degree": "B.S.",
-      "field": "Business Administration",
-      "year": "1995"
-    },
-    {
-      "institution": "Louisiana State University Law Center",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1998"
+      "institution": "BS, JD)"
     }
   ],
-  "occupations": [
-    "Lawyer",
-    "Politician",
-    "Radio host"
-  ],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Louisiana State Representative",
-      "organization": "Louisiana House of Representatives (8th District)",
-      "start_date": "2015-02-01",
-      "end_date": "2017-01-03",
-      "appointed": false
+      "position": "Leader of the House Republican Conference",
+      "start_date": "October 25, 2023",
+      "end_date": ""
     },
     {
-      "position": "U.S. Representative",
-      "organization": "U.S. House of Representatives (LA-4)",
-      "start_date": "2017-01-03",
-      "end_date": null,
-      "appointed": false
+      "position": "Vice Chair of the House Republican Conference",
+      "start_date": "January 3, 2021",
+      "end_date": "October 25, 2023"
     },
     {
-      "position": "Chair, Republican Study Committee",
-      "organization": "U.S. House of Representatives",
-      "start_date": "2019-01-01",
-      "end_date": "2021-01-01",
-      "appointed": false
-    },
-    {
-      "position": "Speaker of the House",
-      "organization": "U.S. House of Representatives",
-      "start_date": "2023-10-25",
-      "end_date": null,
-      "appointed": false
+      "position": "Chair of the Republican Study Committee",
+      "start_date": "January 3, 2019",
+      "end_date": "January 3, 2021"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:42:15.267632+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Mike_Johnson",
+    "wikidata": "https://www.wikidata.org/wiki/Q19880665",
+    "wikidata_qid": "Q19880665"
   }
 }

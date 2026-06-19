@@ -1,51 +1,20 @@
 {
   "bioguide_id": "O000172",
   "wikipedia_title": "Alexandria Ocasio-Cortez",
-  "wikipedia_url": null,
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Alexandria_Ocasio-Cortez",
   "wikidata_qid": "Q55223040",
-  "image_url": null,
-  "short_summary": "U.S. Representative for NY-14 since 2019; youngest woman ever elected to Congress; member of 'The Squad'.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Alexandria_Ocasio-Cortez_Official_Portrait.jpg",
+  "short_summary": "Alexandria Ocasio-Cortez (born October 13, 1989), also known as AOC, is an American politician and activist who has served since 2019 as the U.S. representative for New York's 14th congressional district. She is a member of the Democratic Party and the Democratic Socialists of America.\nOcasio-Cortez was first elected to Congress in 2018, drawing national attention after defeating Democratic Caucus chair and 10-term incumbent Joe Crowley in the Democratic primary election. Crowley's defeat was widely regarded as the biggest primary upset that year. Ocasio-Cortez was reelected in 2020, 2022, and 2024.\nTaking office at age 29, Ocasio-Cortez is the youngest woman ever elected to Congress. She was also, alongside Rashida Tlaib, one of the first two female members of the Democratic Socialists of America (DSA) elected to Congress. Ocasio-Cortez has been described as progressive, left-wing, left-wing populist, and far-left. She advocates a progressive platform that includes support for worker cooperatives, Medicare for All, tuition-free public colleges, a jobs guarantee, a Green New Deal, and abolishing ICE. She is a leader of the left-wing faction of the Democratic Party and a member of the \"Squad\", an informal progressive congressional bloc.",
   "birth_date": "1989-10-13",
-  "birth_place": "Bronx, New York, U.S.",
-  "education": [
-    {
-      "institution": "Boston University",
-      "degree": "B.A.",
-      "field": "International Relations and Economics",
-      "year": "2011"
-    }
-  ],
-  "occupations": [
-    "Educator",
-    "Community organizer",
-    "Politician"
-  ],
-  "prior_positions": [
-    {
-      "position": "Educational Director",
-      "organization": "National Hispanic Institute",
-      "start_date": "2011-01-01",
-      "end_date": "2012-01-01",
-      "appointed": false
-    },
-    {
-      "position": "Bartender and Waitress",
-      "organization": "Flats Fix Taqueria",
-      "start_date": "2017-01-01",
-      "end_date": "2018-01-01",
-      "appointed": false
-    },
-    {
-      "position": "U.S. Representative",
-      "organization": "U.S. House of Representatives (NY-14)",
-      "start_date": "2019-01-03",
-      "end_date": null,
-      "appointed": false
-    }
-  ],
+  "birth_place": "New York City, U.S.",
+  "education": [],
+  "occupations": [],
+  "prior_positions": [],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.719330+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Alexandria_Ocasio-Cortez",
+    "wikidata": "https://www.wikidata.org/wiki/Q55223040",
+    "wikidata_qid": "Q55223040"
   }
 }

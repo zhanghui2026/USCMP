@@ -3,39 +3,38 @@
   "wikipedia_title": "Tom Cole",
   "wikipedia_url": "https://en.wikipedia.org/wiki/Tom_Cole",
   "wikidata_qid": "Q173839",
-  "image_url": null,
-  "short_summary": "Thomas Jeffery Cole (born April 28, 1949) is an American politician serving as the U.S. representative for Oklahoma's 4th congressional district since 2003. A member of the Republican Party, he is the dean of Oklahoma's congressional delegation.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Rep-Tom-Cole-117thCong.jpeg",
+  "short_summary": "Thomas Jeffery Cole (born April 28, 1949) is an American politician and former educator serving as the U.S. representative for Oklahoma's 4th congressional district since 2003. A Republican, he previously served in the Oklahoma Senate from 1988 to 1991 and as the 26th secretary of state of Oklahoma from 1995 to 1999. An enrolled member of the Chickasaw Nation, Cole is the longest-serving Native American in the history of Congress. On April 10, 2024, Cole was elected chair of the House Appropriations Committee.",
   "birth_date": "1949-04-28",
   "birth_place": "Shreveport, Louisiana, U.S.",
   "education": [
     {
-      "institution": "Grinnell College"
-    },
-    {
-      "institution": "Yale University"
-    },
-    {
-      "institution": "University of Oklahoma"
+      "institution": "PhD)"
     }
   ],
-  "occupations": [
-    "Politician",
-    "Academic"
-  ],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Oklahoma Secretary of State (1995-1999)"
+      "position": "Chair of the House Rules Committee",
+      "start_date": "January 3, 2023",
+      "end_date": "April 10, 2024"
     },
     {
-      "position": "U.S. Representative from Oklahoma's 4th district (2003-present)"
+      "position": "Ranking Member of the House Rules Committee",
+      "start_date": "January 3, 2019",
+      "end_date": "January 3, 2023"
+    },
+    {
+      "position": "Chair of the National Republican Congressional Committee",
+      "start_date": "January 3, 2007",
+      "end_date": "January 3, 2009"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "wikipedia_title": "Tom Cole",
-    "wikipedia_url": "https://en.wikipedia.org/wiki/Tom_Cole",
-    "retrieved_at": "2026-06-18T18:42:15.257229+00:00",
+    "wikipedia": "https://en.wikipedia.org/wiki/Tom_Cole",
+    "wikidata": "https://www.wikidata.org/wiki/Q173839",
     "wikidata_qid": "Q173839"
   }
 }

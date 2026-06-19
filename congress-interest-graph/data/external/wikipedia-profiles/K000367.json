@@ -1,64 +1,46 @@
 {
   "bioguide_id": "K000367",
   "wikipedia_title": "Amy Klobuchar",
-  "wikipedia_url": null,
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Amy_Klobuchar",
   "wikidata_qid": "Q22237",
-  "image_url": null,
-  "short_summary": "U.S. Senator from Minnesota since 2007; previously Hennepin County Attorney (1999-2007); Chair, Senate Rules Committee.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Amy_Klobuchar%2C_official_portrait%2C_113th_Congress.jpg",
+  "short_summary": "Amy Jean Klobuchar ( KLOH-bə-shar; born May 25, 1960) is an American politician and lawyer serving as the senior United States senator from Minnesota, a seat she has held since 2007. A member of the Minnesota Democratic–Farmer–Labor Party (DFL), Minnesota's affiliate of the Democratic Party, she previously served as county attorney of Hennepin County, Minnesota.  She is running for governor of Minnesota in the 2026 election.\nBorn in Plymouth, Minnesota, Klobuchar graduated from Yale University and the University of Chicago Law School. She was a partner at two Minneapolis law firms before being elected county attorney of Hennepin County in 1998, making her responsible for all criminal prosecution in Minnesota's most populous county. Klobuchar was first elected to the Senate in 2006, succeeding Mark Dayton to become Minnesota's first elected female United States senator. She became Minnesota's senior senator in 2009, when Norm Coleman left the Senate following his defeat. She was reelected by a landslide in 2012, winning 85 of the state's 87 counties, before being reelected again in 2018. Klobuchar's political positions align with modern liberalism. She has focused on healthcare reform, consumer protection, abortion rights, agriculture, and climate change.\nOn February 10, 2019, Klobuchar announced her candidacy for the Democratic nomination for president of the United States in the 2020 election; on March 2, 2020, she suspended her campaign and endorsed Joe Biden. In 2021, she became the chair of the Senate Rules Committee. She was reelected to a fourth Senate term in 2024, defeating Republican nominee Royce White. In January 2026, she announced her candidacy for governor of Minnesota after incumbent Tim Walz withdrew from the race.",
   "birth_date": "1960-05-25",
   "birth_place": "Plymouth, Minnesota, U.S.",
-  "education": [
-    {
-      "institution": "Yale University",
-      "degree": "B.A.",
-      "field": "Political Science",
-      "year": "1982"
-    },
-    {
-      "institution": "University of Chicago Law School",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1985"
-    }
-  ],
-  "occupations": [
-    "Lawyer",
-    "Prosecutor",
-    "Politician"
-  ],
+  "education": [],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Partner",
-      "organization": "Dorsey & Whitney",
-      "start_date": "1985-01-01",
-      "end_date": "1998-01-01",
-      "appointed": false
+      "position": "Ranking Member of the Senate Agriculture Committee",
+      "start_date": "January 3, 2025",
+      "end_date": ""
     },
     {
-      "position": "Hennepin County Attorney",
-      "organization": "Hennepin County, Minnesota",
-      "start_date": "1999-01-01",
-      "end_date": "2007-01-03",
-      "appointed": false
+      "position": "Chair of the Senate Democratic Steering and Policy Committee",
+      "start_date": "January 3, 2025",
+      "end_date": ""
     },
     {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (Minnesota)",
-      "start_date": "2007-01-03",
-      "end_date": null,
-      "appointed": false
+      "position": "Chair of the Senate Rules Committee",
+      "start_date": "February 3, 2021",
+      "end_date": "January 3, 2025"
     },
     {
-      "position": "Chair, Senate Rules Committee",
-      "organization": "U.S. Senate",
-      "start_date": "2021-01-20",
-      "end_date": null,
-      "appointed": false
+      "position": "Chair of the Senate Democratic Steering Committee",
+      "start_date": "January 3, 2015{{efn|From January 3, 2015 to January 3, 2017, Klobuchar was Chair of the Steering and Outreach Committee. Steering and Outreach were then split into two separate chairs; with [[Bernie Sanders]] as Chair of Outreach.}}",
+      "end_date": "January 3, 2025"
+    },
+    {
+      "position": "County Attorney of Hennepin County",
+      "start_date": "January 5, 1999",
+      "end_date": "January 3, 2007"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.701972+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Amy_Klobuchar",
+    "wikidata": "https://www.wikidata.org/wiki/Q22237",
+    "wikidata_qid": "Q22237"
   }
 }

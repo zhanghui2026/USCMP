@@ -1,64 +1,26 @@
 {
   "bioguide_id": "H001089",
   "wikipedia_title": "Josh Hawley",
-  "wikipedia_url": null,
-  "wikidata_qid": "Q46648657",
-  "image_url": null,
-  "short_summary": "U.S. Senator from Missouri since 2019; previously Attorney General of Missouri (2017-2019); Yale Law graduate; clerked for Chief Justice John Roberts.",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Josh_Hawley",
+  "wikidata_qid": "Q23020745",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Josh_Hawley%2C_official_portrait%2C_116th_congress.jpg",
+  "short_summary": "Joshua David Hawley (born December 31, 1979) is an American politician and attorney serving as the senior United States senator from Missouri, a seat he has held since 2019. A member of the Republican Party, Hawley served as the 42nd attorney general of Missouri from 2017 to 2019, before defeating two-term incumbent Democratic senator Claire McCaskill in the 2018 election. He was reelected in 2024.\nBorn in Springdale, Arkansas, to a banker and a teacher, Hawley graduated from Stanford University in 2002 and Yale Law School in 2006. After being a law clerk to Judge Michael W. McConnell and Chief Justice John Roberts, he worked as a lawyer, first in private practice from 2008 to 2011 and then for the Becket Fund for Religious Liberty from 2011 to 2015. Before being elected Missouri attorney general, he was also an associate professor at the University of Missouri School of Law, and a faculty member of the conservative Blackstone Legal Fellowship.\nAs Missouri attorney general, Hawley initiated several high-profile lawsuits and investigations, including a lawsuit against the Affordable Care Act, an investigation into Missouri governor Eric Greitens, and a lawsuit and investigation into companies associated with the opioid epidemic. His political beliefs have been described as populist and socially conservative.\n\nIn December 2020, Hawley became the first senator to announce plans to object to the certification of Joe Biden's victory in the 2020 United States presidential election. He led efforts in the Senate to do so.",
   "birth_date": "1979-12-31",
   "birth_place": "Springdale, Arkansas, U.S.",
-  "education": [
-    {
-      "institution": "Stanford University",
-      "degree": "B.A.",
-      "field": "History",
-      "year": "2002"
-    },
-    {
-      "institution": "Yale Law School",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "2006"
-    }
-  ],
-  "occupations": [
-    "Lawyer",
-    "Law professor",
-    "Politician"
-  ],
+  "education": [],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Law Clerk for Chief Justice John Roberts",
-      "organization": "Supreme Court of the United States",
-      "start_date": "2007-01-01",
-      "end_date": "2008-01-01",
-      "appointed": false
-    },
-    {
-      "position": "Associate Professor of Law",
-      "organization": "University of Missouri School of Law",
-      "start_date": "2008-01-01",
-      "end_date": "2015-01-01",
-      "appointed": false
-    },
-    {
-      "position": "Attorney General of Missouri",
-      "organization": "State of Missouri",
-      "start_date": "2017-01-01",
-      "end_date": "2019-01-03",
-      "appointed": false
-    },
-    {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (Missouri)",
-      "start_date": "2019-01-03",
-      "end_date": null,
-      "appointed": false
+      "position": "42nd Attorney General of Missouri",
+      "start_date": "January 9, 2017",
+      "end_date": "January 3, 2019"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.720734+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Josh_Hawley",
+    "wikidata": "https://www.wikidata.org/wiki/Q23020745",
+    "wikidata_qid": "Q23020745"
   }
 }

@@ -1,78 +1,40 @@
 {
   "bioguide_id": "G000359",
   "wikipedia_title": "Lindsey Graham",
-  "wikipedia_url": null,
-  "wikidata_qid": "Q22248",
-  "image_url": null,
-  "short_summary": "U.S. Senator from South Carolina since 2003; previously U.S. Representative (SC-3, 1995-2003); Air Force JAG officer.",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Lindsey_Graham",
+  "wikidata_qid": "Q22212",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Lindsey_Graham_Berlin_2025.jpg",
+  "short_summary": "Lindsey Olin Graham ( GRAM; born July 9, 1955) is an American politician and attorney serving as the senior United States senator from South Carolina, a seat he has held since 2003. A member of the Republican Party, he chaired the Senate Committee on the Judiciary from 2019 to 2021. Graham served in the South Carolina House of Representatives from 1993 to 1995 and in the U.S. House of Representatives from 1995 to 2003.\nBorn in Central, South Carolina, Graham earned both a Bachelor of Arts and a Juris Doctor from the University of South Carolina. Before entering politics, Graham served as a member of the Judge Advocate General's Corps in the U.S. Air Force from 1982 to 1988, working as a defense attorney and chief prosecutor in Europe. He later served in the U.S. Air Force Reserve while in Congress. He was awarded a Bronze Star Medal for meritorious service in 2014 and held the rank of colonel. Graham worked as a lawyer in private practice before serving from 1993 to 1995 in the South Carolina House of Representatives and from 1995 to 2003 in the U.S. House of Representatives, where he represented South Carolina's 3rd congressional district. In 2002, Graham was elected to the U.S. Senate. He was reelected in 2008, 2014, and 2020.\nGraham is a strong advocate for an interventionist foreign policy. He ran for the Republican nomination in the 2016 U.S. presidential election but dropped out before the primaries began. He was an outspoken critic of Donald Trump's 2016 candidacy, but became a staunch ally after meeting with him in 2017. Graham is running for reelection in 2026.",
   "birth_date": "1955-07-09",
   "birth_place": "Central, South Carolina, U.S.",
   "education": [
     {
-      "institution": "University of South Carolina",
-      "degree": "B.A.",
-      "field": "Psychology",
-      "year": "1977"
-    },
-    {
-      "institution": "University of South Carolina School of Law",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1981"
+      "institution": "BA, JD)"
     }
   ],
-  "occupations": [
-    "Lawyer",
-    "Military officer",
-    "Politician"
-  ],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Judge Advocate",
-      "organization": "U.S. Air Force (JAG Corps)",
-      "start_date": "1982-01-01",
-      "end_date": "1988-01-01",
-      "appointed": false
+      "position": "Ranking Member of the Senate Judiciary Committee",
+      "start_date": "January 3, 2023",
+      "end_date": "January 3, 2025"
     },
     {
-      "position": "South Carolina State Representative",
-      "organization": "South Carolina House of Representatives (2nd District)",
-      "start_date": "1993-01-01",
-      "end_date": "1995-01-01",
-      "appointed": false
+      "position": "Ranking Member of the Senate Budget Committee",
+      "start_date": "February 3, 2021",
+      "end_date": "January 3, 2023"
     },
     {
-      "position": "U.S. Representative",
-      "organization": "U.S. House of Representatives (SC-3)",
-      "start_date": "1995-01-03",
-      "end_date": "2003-01-03",
-      "appointed": false
-    },
-    {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (South Carolina)",
-      "start_date": "2003-01-03",
-      "end_date": null,
-      "appointed": false
-    },
-    {
-      "position": "Chair, Senate Judiciary Committee",
-      "organization": "U.S. Senate",
-      "start_date": "2019-01-03",
-      "end_date": "2021-01-20",
-      "appointed": false
+      "position": "Chair of the Senate Judiciary Committee",
+      "start_date": "January 3, 2019",
+      "end_date": "February 3, 2021"
     }
   ],
   "employers": [],
-  "military_service": [
-    {
-      "branch": "U.S. Air Force",
-      "rank": "Colonel",
-      "years": "1982-2015",
-      "unit": "JAG Corps / Air Force Reserve"
-    }
-  ],
+  "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.707355+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Lindsey_Graham",
+    "wikidata": "https://www.wikidata.org/wiki/Q22212",
+    "wikidata_qid": "Q22212"
   }
 }

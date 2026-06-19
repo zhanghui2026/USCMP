@@ -1,77 +1,24 @@
 {
   "bioguide_id": "W000817",
   "wikipedia_title": "Elizabeth Warren",
-  "wikipedia_url": null,
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Elizabeth_Warren",
   "wikidata_qid": "Q434706",
-  "image_url": null,
-  "short_summary": "U.S. Senator from Massachusetts since 2013; previously Harvard Law professor and consumer protection advocate; architect of the Consumer Financial Protection Bureau.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Elizabeth_Warren%2C_official_portrait%2C_114th_Congress.jpg",
+  "short_summary": "Elizabeth Ann Warren (née Herring; born June 22, 1949) is an American politician and former law professor serving as the senior United States senator from Massachusetts, a seat she has held since 2013. A member of the Democratic Party and regarded as a progressive, Warren has focused on consumer protection, equitable economic opportunity, and the social safety net while in the Senate. Warren was also a candidate in the 2020 Democratic Party presidential primaries, ultimately finishing third after Joe Biden and Bernie Sanders.\nBorn and raised in Oklahoma, Warren is a graduate of the University of Houston and Rutgers Law School. She has taught law at several universities, including the University of Houston, the University of Texas at Austin, the University of Pennsylvania, and Harvard University, with expertise in bankruptcy and commercial law. Warren has written 12 books and more than 100 articles.\nWarren's first foray into public policy began in 1995, when she worked to oppose what eventually became a 2005 act restricting bankruptcy access for individuals. During the late 2000s, her national profile grew after her forceful public stances in favor of more stringent banking regulations after the 2008 financial crisis. She served as chair of the Congressional Oversight Panel of the Troubled Asset Relief Program, and proposed and established the Consumer Financial Protection Bureau, for which she served as the first special advisor under President Barack Obama.\nIn 2012, Warren defeated incumbent Republican Scott Brown and became the first female U.S. senator from Massachusetts. She was reelected by a wide margin in 2018, defeating Republican nominee Geoff Diehl. On February 9, 2019, Warren announced her candidacy in the 2020 United States presidential election. She was briefly considered the front-runner for the Democratic nomination in late 2019, but support for her campaign dwindled. She withdrew from the race on March 5, 2020, after Super Tuesday. She was reelected ",
   "birth_date": "1949-06-22",
   "birth_place": "Oklahoma City, Oklahoma, U.S.",
   "education": [
     {
-      "institution": "George Washington University",
-      "degree": "Attended",
-      "field": null,
-      "year": "1968"
-    },
-    {
-      "institution": "University of Houston",
-      "degree": "B.S.",
-      "field": "Speech Pathology and Audiology",
-      "year": "1970"
-    },
-    {
-      "institution": "Rutgers Law School",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1976"
+      "institution": "George Washington University (attended)"
     }
   ],
-  "occupations": [
-    "Law professor",
-    "Author",
-    "Politician"
-  ],
-  "prior_positions": [
-    {
-      "position": "Professor of Law",
-      "organization": "Harvard Law School",
-      "start_date": "1995-01-01",
-      "end_date": "2012-12-31",
-      "appointed": false
-    },
-    {
-      "position": "Professor of Law",
-      "organization": "University of Pennsylvania Law School",
-      "start_date": "1987-01-01",
-      "end_date": "1995-01-01",
-      "appointed": false
-    },
-    {
-      "position": "Special Advisor for the CFPB",
-      "organization": "U.S. Department of the Treasury",
-      "start_date": "2010-09-17",
-      "end_date": "2011-07-31",
-      "appointed": true
-    },
-    {
-      "position": "Chair, Congressional Oversight Panel for TARP",
-      "organization": "U.S. Congress",
-      "start_date": "2008-11-01",
-      "end_date": "2011-01-01",
-      "appointed": true
-    },
-    {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (Massachusetts)",
-      "start_date": "2013-01-03",
-      "end_date": null,
-      "appointed": false
-    }
-  ],
+  "occupations": [],
+  "prior_positions": [],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.705535+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_Warren",
+    "wikidata": "https://www.wikidata.org/wiki/Q434706",
+    "wikidata_qid": "Q434706"
   }
 }

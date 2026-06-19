@@ -1,70 +1,30 @@
 {
   "bioguide_id": "S000148",
   "wikipedia_title": "Chuck Schumer",
-  "wikipedia_url": null,
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Chuck_Schumer",
   "wikidata_qid": "Q380900",
-  "image_url": null,
-  "short_summary": "Senate Majority Leader; U.S. Senator from New York since 1999; previously U.S. Representative for NY-9 and NY-10 (1981-1999).",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/79/File%3AChuck_Schumer_official_photo.jpg",
+  "short_summary": "Charles Ellis  Schumer ( SHOO-mər; born November 23, 1950) is an American politician serving since 1999 as a United States senator from New York. A member of the Democratic Party, he has led the Senate Democratic Caucus since 2017 and served as Senate majority leader from 2021 to 2025. He has served two stints as Senate minority leader, from 2017 to 2021 and since 2025. He became New York's senior senator in 2001, upon Daniel Patrick Moynihan's retirement. Elected to a fifth term in 2022, Schumer surpassed Moynihan and Jacob K. Javits as the longest-serving U.S. senator from New York. He is the dean of New York's congressional delegation.\nA native of Brooklyn and a graduate of Harvard College and Harvard Law School, Schumer was a three-term member of the New York State Assembly from 1975 to 1980. He served nine terms in the United States House of Representatives from 1981 to 1999, first representing New York's 16th congressional district before being redistricted to the 10th congressional district in 1983 and 9th congressional district 10 years later. In 1998, Schumer was elected to the Senate, defeating three-term Republican incumbent Al D'Amato. He was reelected in 2004 with 71% of the vote, in 2010 with 66% of the vote, in 2016 with 70% of the vote, and in 2022 with 56% of the vote.\nSchumer chaired the Democratic Senatorial Campaign Committee from 2005 to 2009, overseeing 14 Democratic gains in the Senate in the 2006 and 2008 elections. He was the third-ranking Democrat in the Senate, behind Senate majority leader Harry Reid and majority whip Dick Durbin. He served as Vice Chair of the Democratic Caucus in the Senate from 2007 to 2017 and chaired the Senate Democratic Policy Committee from 2011 to 2017. Schumer won his fourth term in the Senate in 2016 and was then unanimously elected Democratic leader to succeed Reid, who was retiring.\nIn January 2021, Schumer became Senate majority leader, becoming the first Jewish Senate leader in U.S. history. As majority lea",
   "birth_date": "1950-11-23",
-  "birth_place": "Brooklyn, New York, U.S.",
+  "birth_place": "Midwood, Brooklyn, New York, U.S.",
   "education": [
     {
-      "institution": "Harvard University",
-      "degree": "B.A.",
-      "field": "Social Studies",
-      "year": "1971"
-    },
-    {
-      "institution": "Harvard Law School",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1974"
+      "institution": "BA, JD)"
     }
   ],
-  "occupations": [
-    "Lawyer",
-    "Politician"
-  ],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "U.S. Representative",
-      "organization": "U.S. House of Representatives (NY-9, NY-10)",
-      "start_date": "1981-01-03",
-      "end_date": "1999-01-03",
-      "appointed": false
-    },
-    {
-      "position": "New York State Assembly Member",
-      "organization": "New York State Assembly (45th District)",
-      "start_date": "1975-01-01",
-      "end_date": "1980-12-31",
-      "appointed": false
-    },
-    {
-      "position": "Senate Democratic Leader",
-      "organization": "U.S. Senate",
-      "start_date": "2017-01-03",
-      "end_date": null,
-      "appointed": false
-    },
-    {
-      "position": "Senate Majority Leader",
-      "organization": "U.S. Senate",
-      "start_date": "2021-01-20",
-      "end_date": "2025-01-03",
-      "appointed": false
-    },
-    {
       "position": "Senate Minority Leader",
-      "organization": "U.S. Senate",
-      "start_date": "2017-01-03",
-      "end_date": "2021-01-20",
-      "appointed": false
+      "start_date": "January 3, 2025",
+      "end_date": ""
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.713219+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Chuck_Schumer",
+    "wikidata": "https://www.wikidata.org/wiki/Q380900",
+    "wikidata_qid": "Q380900"
   }
 }

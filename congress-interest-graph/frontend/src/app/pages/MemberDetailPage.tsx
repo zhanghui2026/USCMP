@@ -274,8 +274,8 @@ export default function MemberDetailPage() {
                   <Card size="small" style={{ marginBottom: 8, background: '#1a1a2e' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
                       <Text strong style={{ color: '#d1d5db', fontSize: 13 }}>摘要</Text>
-                      <Tag color={profile.source === 'wikipedia' ? 'blue' : profile.source === 'fixture' ? 'green' : 'orange'} style={{ fontSize: 10 }}>
-                        {profile.source === 'wikipedia' ? 'Wikipedia 履历' : profile.source === 'fixture' ? 'Fixture 履历' : 'USCL 基础资料'}
+                      <Tag color={profile.source === 'wikipedia' ? 'blue' : profile.source === 'fixture' ? 'green' : profile.source === 'wikipedia_snapshot' ? 'cyan' : 'orange'} style={{ fontSize: 10 }}>
+                        {profile.source === 'wikipedia' ? 'Wikipedia 履历' : profile.source === 'fixture' ? 'Fixture 履历' : profile.source === 'wikipedia_snapshot' ? 'Wikipedia Snapshot' : 'USCL 基础资料'}
                       </Tag>
                     </div>
                     {profile.short_summary ? (
@@ -423,7 +423,7 @@ export default function MemberDetailPage() {
                             : '教育、职业、任职经历、军事经历等'}
                         </Descriptions.Item>
                         <Descriptions.Item label="数据来源">
-                          {profile.source === 'wikipedia' ? 'Wikipedia' : 'UnitedStates/Congress-Legislators (CC0-1.0)'}
+                          {profile.source === 'wikipedia' ? 'Wikipedia' : profile.source === 'wikipedia_snapshot' ? 'Wikipedia Snapshot' : profile.source === 'fixture' ? 'Fixture' : 'UnitedStates/Congress-Legislators (CC0-1.0)'}
                         </Descriptions.Item>
                       </Descriptions>
                     </Card>

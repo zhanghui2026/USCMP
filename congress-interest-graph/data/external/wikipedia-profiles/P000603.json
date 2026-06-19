@@ -1,50 +1,35 @@
 {
   "bioguide_id": "P000603",
   "wikipedia_title": "Rand Paul",
-  "wikipedia_url": null,
-  "wikidata_qid": "Q375520",
-  "image_url": null,
-  "short_summary": "U.S. Senator from Kentucky since 2011; ophthalmologist; son of former Rep. Ron Paul.",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Rand_Paul",
+  "wikidata_qid": "Q463557",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Rand_Paul_Portrait.jpg",
+  "short_summary": "Randal Howard Paul (born January 7, 1963) is an American politician serving as the junior United States senator from Kentucky since 2011. A member of the Republican Party, he is the chair of the Senate Homeland Security Committee.\nBorn in Pittsburgh, Pennsylvania, Paul has described himself as a constitutional conservative and a supporter of the Tea Party movement. His libertarian views have been compared to those of his father, three-time presidential candidate and 12-term U.S. representative from Texas, Ron Paul. Paul attended Baylor University and is a graduate of the Duke University School of Medicine. He was a practicing ophthalmologist in Bowling Green, Kentucky, from 1993 until his election to the U.S. Senate in 2010. He was re-elected in 2016 and won a third term in 2022. Paul was a candidate for the Republican nomination in the 2016 U.S. presidential election. Paul is set to become Kentucky's senior senator when Mitch McConnell retires in 2027.",
   "birth_date": "1963-01-07",
   "birth_place": "Pittsburgh, Pennsylvania, U.S.",
   "education": [
     {
-      "institution": "Baylor University",
-      "degree": "Attended",
-      "field": "Biology",
-      "year": "1984"
-    },
-    {
-      "institution": "Duke University School of Medicine",
-      "degree": "M.D.",
-      "field": "Medicine",
-      "year": "1988"
+      "institution": "Baylor University (attended)"
     }
   ],
-  "occupations": [
-    "Ophthalmologist",
-    "Physician",
-    "Politician"
-  ],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Ophthalmologist",
-      "organization": "Private Practice, Bowling Green, Kentucky",
-      "start_date": "1993-01-01",
-      "end_date": "2010-12-31",
-      "appointed": false
+      "position": "Ranking Member of the Senate Homeland Security Committee",
+      "start_date": "January 3, 2023",
+      "end_date": "January 3, 2025"
     },
     {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (Kentucky)",
-      "start_date": "2011-01-03",
-      "end_date": null,
-      "appointed": false
+      "position": "Ranking Member of the Senate Small Business Committee",
+      "start_date": "February 3, 2021",
+      "end_date": "January 3, 2023"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.716318+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Rand_Paul",
+    "wikidata": "https://www.wikidata.org/wiki/Q463557",
+    "wikidata_qid": "Q463557"
   }
 }

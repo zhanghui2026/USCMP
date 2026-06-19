@@ -1,63 +1,26 @@
 {
   "bioguide_id": "C001098",
   "wikipedia_title": "Ted Cruz",
-  "wikipedia_url": null,
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Ted_Cruz",
   "wikidata_qid": "Q2036942",
-  "image_url": null,
-  "short_summary": "U.S. Senator from Texas since 2013; previously Solicitor General of Texas (2003-2008); clerked for Chief Justice William Rehnquist.",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Ted_Cruz_official_116th_portrait_%283x4_cropped%29.jpg",
+  "short_summary": "Rafael Edward  Cruz (; born December 22, 1970) is an American politician and attorney serving as the junior United States senator from Texas since 2013. A member of the Republican Party, Cruz was the solicitor general of Texas from 2003 to 2008. Since 2025, Cruz has chaired the Senate Commerce Committee.\nAfter graduating from Princeton University with a Bachelor of Arts and earning a Juris Doctor from Harvard Law School, Cruz pursued a career in politics, eventually serving as a policy advisor in the George W. Bush administration. In 2003, Texas attorney general Greg Abbott appointed Cruz to serve as solicitor general, a position he held until 2008. \nFirst elected to the U.S. Senate in 2012, Cruz is the first Hispanic American to serve as a U.S. senator from Texas. He played a leading role in the 2013 federal government shutdown, unsuccessfully seeking to force Congress and President Barack Obama to defund the Affordable Care Act. Cruz was reelected in a close race in 2018 and in 2024. In 2025, he drafted and led the effort to pass the TAKE IT DOWN Act, signed into law by President Donald Trump. In May 2025, Cruz introduced a bill to create what later became Trump accounts.\nIn 2016, Cruz sought the Republican presidential nomination, emerging as a serious competitor to Trump in a primary marked by intense and often personal exchanges. Cruz initially withheld his endorsement after Trump won the nomination, but became a supporter during Trump's first term. Cruz is set to become Texas's senior senator when John Cornyn leaves office in 2027.",
   "birth_date": "1970-12-22",
   "birth_place": "Calgary, Alberta, Canada",
-  "education": [
-    {
-      "institution": "Princeton University",
-      "degree": "A.B.",
-      "field": "Public Policy",
-      "year": "1992"
-    },
-    {
-      "institution": "Harvard Law School",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1995"
-    }
-  ],
-  "occupations": [
-    "Lawyer",
-    "Politician"
-  ],
+  "education": [],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Law Clerk for Chief Justice William Rehnquist",
-      "organization": "Supreme Court of the United States",
-      "start_date": "1996-01-01",
-      "end_date": "1997-01-01",
-      "appointed": false
-    },
-    {
-      "position": "Solicitor General of Texas",
-      "organization": "State of Texas",
-      "start_date": "2003-01-01",
-      "end_date": "2008-05-01",
-      "appointed": true
-    },
-    {
-      "position": "Partner",
-      "organization": "Morgan, Lewis & Bockius",
-      "start_date": "2008-01-01",
-      "end_date": "2012-01-01",
-      "appointed": false
-    },
-    {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (Texas)",
-      "start_date": "2013-01-03",
-      "end_date": null,
-      "appointed": false
+      "position": "Ranking Member of the Senate Commerce Committee",
+      "start_date": "January 3, 2023",
+      "end_date": "January 3, 2025"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.710381+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Ted_Cruz",
+    "wikidata": "https://www.wikidata.org/wiki/Q2036942",
+    "wikidata_qid": "Q2036942"
   }
 }

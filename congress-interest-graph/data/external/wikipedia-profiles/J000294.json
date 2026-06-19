@@ -1,62 +1,36 @@
 {
   "bioguide_id": "J000294",
   "wikipedia_title": "Hakeem Jeffries",
-  "wikipedia_url": null,
-  "wikidata_qid": "Q5640353",
-  "image_url": null,
-  "short_summary": "House Minority Leader; U.S. Representative for NY-8 since 2013.",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Hakeem_Jeffries",
+  "wikidata_qid": "Q5640425",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Rep-Hakeem-Jeffries-Official-Portrait_%28cropped%29.jpg",
+  "short_summary": "Hakeem Sekou Jeffries ( hah-KEEM; born August 4, 1970) is an American politician and attorney who has served as House minority leader and leader of the House Democratic Caucus since 2023. Currently in his seventh term, Jeffries has been the U.S. representative for New York's 8th congressional district since 2013 and served three terms as a member of the New York State Assembly from 2007 to 2012.\nJeffries was born in the New York City borough of Brooklyn and raised in the Crown Heights neighborhood. He attended law school at New York University, graduating with honors and becoming a corporate lawyer before running for elected office. Both his state assembly district and congressional district are anchored in Brooklyn.\nIn Congress, Jeffries chaired the House Democratic Caucus from 2019 to 2023. The members of the caucus unanimously elected him to succeed Nancy Pelosi as leader in November 2022. This made him the first African American to lead a party in either chamber of the United States Congress.",
   "birth_date": "1970-08-04",
-  "birth_place": "Brooklyn, New York, U.S.",
-  "education": [
-    {
-      "institution": "Binghamton University",
-      "degree": "B.A.",
-      "field": "Political Science",
-      "year": "1992"
-    },
-    {
-      "institution": "Georgetown University",
-      "degree": "M.P.P.",
-      "field": "Public Policy",
-      "year": "1994"
-    },
-    {
-      "institution": "New York University School of Law",
-      "degree": "J.D.",
-      "field": "Law",
-      "year": "1997"
-    }
-  ],
-  "occupations": [
-    "Lawyer",
-    "Politician"
-  ],
+  "birth_place": "New York City, New York, U.S.",
+  "education": [],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "New York State Assembly Member",
-      "organization": "New York State Assembly (57th District)",
-      "start_date": "2007-01-01",
-      "end_date": "2012-12-31",
-      "appointed": false
+      "position": "Leader of the House Democratic Caucus",
+      "start_date": "January 3, 2023",
+      "end_date": ""
     },
     {
-      "position": "U.S. Representative",
-      "organization": "U.S. House of Representatives (NY-8)",
-      "start_date": "2013-01-03",
-      "end_date": null,
-      "appointed": false
+      "position": "Chair of the House Democratic Caucus",
+      "start_date": "January 3, 2019",
+      "end_date": "January 3, 2023"
     },
     {
-      "position": "House Democratic Caucus Chair",
-      "organization": "U.S. House of Representatives",
-      "start_date": "2019-01-03",
-      "end_date": "2023-01-03",
-      "appointed": false
+      "position": "Co-Chair of the House Democratic Policy and Communications Committee",
+      "start_date": "January 3, 2017",
+      "end_date": "January 3, 2019"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.714919+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Hakeem_Jeffries",
+    "wikidata": "https://www.wikidata.org/wiki/Q5640425",
+    "wikidata_qid": "Q5640425"
   }
 }

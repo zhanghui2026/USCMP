@@ -1,0 +1,46 @@
+{
+  "bioguide_id": "W000802",
+  "wikipedia_title": "Sheldon Whitehouse",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Sheldon_Whitehouse",
+  "wikidata_qid": "Q652066",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Sheldon_Whitehouse%2C_official_portrait%2C_116th_congress.jpg",
+  "short_summary": "Sheldon Whitehouse (born October 20, 1955) is an American politician and attorney serving as the junior United States senator from Rhode Island, a seat he has held since 2007. A member of the Democratic Party, he served as the United States Attorney for the District of Rhode Island from 1993 to 1998, and as the 71st attorney general of Rhode Island from 1999 to 2003. He was elected to the Senate in 2006, defeating Republican incumbent Lincoln Chafee. He was reelected in 2012, 2018, and 2024.\nA political progressive and climate hawk, Whitehouse became chair of the United States Senate Committee on the Budget in 2023. He has given hundreds of Senate floor speeches about climate change and asserted that politically conservative \"dark money\" groups are conducting a campaign to take control of the U.S. government, specifically the U.S. Supreme Court, to prevent climate action, among other reasons.",
+  "birth_date": "1955-10-20",
+  "birth_place": "New York, U.S.",
+  "education": [],
+  "occupations": [],
+  "prior_positions": [
+    {
+      "position": "Ranking Member of the Senate Environment Committee",
+      "start_date": "January 3, 2025",
+      "end_date": ""
+    },
+    {
+      "position": "Chair of the Senate Budget Committee",
+      "start_date": "January 3, 2023",
+      "end_date": "January 3, 2025"
+    },
+    {
+      "position": "Chair of the Senate Narcotics Caucus",
+      "start_date": "February 3, 2021",
+      "end_date": "January 3, 2025"
+    },
+    {
+      "position": "71st Attorney General of Rhode Island",
+      "start_date": "January 2, 1999",
+      "end_date": "January 7, 2003"
+    },
+    {
+      "position": "District of Rhode Island",
+      "start_date": "January 20, 1993",
+      "end_date": "June 8, 1998"
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Sheldon_Whitehouse",
+    "wikidata": "https://www.wikidata.org/wiki/Q652066",
+    "wikidata_qid": "Q652066"
+  }
+}

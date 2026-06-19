@@ -1,72 +1,44 @@
 {
   "bioguide_id": "S000033",
   "wikipedia_title": "Bernie Sanders",
-  "wikipedia_url": null,
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Bernie_Sanders",
   "wikidata_qid": "Q359442",
-  "image_url": null,
-  "short_summary": "U.S. Senator from Vermont since 2007; previously U.S. Representative for VT-AL (1991-2007); Mayor of Burlington (1981-1989).",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Bernie_Sanders_February_2026_%28cropped%29.jpg",
+  "short_summary": "Bernard  Sanders (born September 8, 1941) is an American politician and activist serving as the senior United States senator from Vermont, a seat he has held since 2007. He is the longest-serving independent in U.S. congressional history, but maintains a close relationship with the Democratic Party, having caucused with House and Senate Democrats for most of his congressional career and sought the party's presidential nomination in 2016 and 2020. A self-described democratic socialist, Sanders is regarded as one of the main leaders of the 21st-century American progressive movement.\nBorn into a working-class Jewish family and raised in New York City, Sanders attended Brooklyn College before graduating from the University of Chicago in 1964. While a student, he was a protest organizer for the Congress of Racial Equality (CORE) and the Student Nonviolent Coordinating Committee (SNCC) during the civil rights movement. After settling in Vermont in 1968, he ran unsuccessful third-party political campaigns in the 1970s. He was elected mayor of Burlington in 1981 as an independent and was reelected three times.\nSanders was elected to the United States House of Representatives in 1990, representing Vermont's at-large congressional district. In 1991, he and five other House members co-founded the Congressional Progressive Caucus. Sanders was a U.S. representative for 16 years before being elected to the U.S. Senate in 2006, becoming the first non-Republican elected to Vermont's Class 1 seat since Solomon Foot, a Whig, in 1850. He was reelected in 2012, 2018, and 2024. Sanders also chaired the Senate Veterans' Affairs Committee from 2013 to 2015, the Senate Budget Committee from 2021 to 2023, and the Senate Health, Education, Labor and Pensions Committee from 2023 to 2025. He is the senior senator and dean of the Vermont congressional delegation.\nSanders was a candidate for the Democratic presidential nomination in 2016 and 2020, finishing second both times. His 2016 campaign g",
   "birth_date": "1941-09-08",
   "birth_place": "Brooklyn, New York, U.S.",
-  "education": [
-    {
-      "institution": "Brooklyn College",
-      "degree": "Attended",
-      "field": "Psychology",
-      "year": "1960"
-    },
-    {
-      "institution": "University of Chicago",
-      "degree": "B.A.",
-      "field": "Political Science",
-      "year": "1964"
-    }
-  ],
-  "occupations": [
-    "Carpenter",
-    "Filmmaker",
-    "Writer",
-    "Politician"
-  ],
+  "education": [],
+  "occupations": [],
   "prior_positions": [
     {
-      "position": "Mayor of Burlington",
-      "organization": "City of Burlington, Vermont",
-      "start_date": "1981-04-06",
-      "end_date": "1989-04-03",
-      "appointed": false
+      "position": "Ranking Member of the Senate Health, Education, Labor and Pensions Committee",
+      "start_date": "January 3, 2025"
     },
     {
-      "position": "U.S. Representative",
-      "organization": "U.S. House of Representatives (VT-AL)",
-      "start_date": "1991-01-03",
-      "end_date": "2007-01-03",
-      "appointed": false
+      "position": "Chair of the Senate Health, Education, Labor and Pensions Committee",
+      "start_date": "January 3, 2023",
+      "end_date": "January 3, 2025"
     },
     {
-      "position": "U.S. Senator",
-      "organization": "U.S. Senate (Vermont)",
-      "start_date": "2007-01-03",
-      "end_date": null,
-      "appointed": false
+      "position": "Chair of the Senate Democratic Outreach Committee",
+      "start_date": "January 3, 2017"
     },
     {
-      "position": "Chair, Senate Budget Committee",
-      "organization": "U.S. Senate",
-      "start_date": "2021-01-20",
-      "end_date": "2023-01-03",
-      "appointed": false
+      "position": "Chair of the Senate Budget Committee",
+      "start_date": "February 3, 2021",
+      "end_date": "January 3, 2023"
     },
     {
-      "position": "Ranking Member, Senate Budget Committee",
-      "organization": "U.S. Senate",
-      "start_date": "2015-01-03",
-      "end_date": "2021-01-20",
-      "appointed": false
+      "position": "Chair of the Senate Veterans' Affairs Committee",
+      "start_date": "January 3, 2013",
+      "end_date": "January 3, 2015"
     }
   ],
   "employers": [],
   "military_service": [],
   "profile_sources": {
-    "retrieved_at": "2026-06-18T18:23:47.703424+00:00"
+    "wikipedia": "https://en.wikipedia.org/wiki/Bernie_Sanders",
+    "wikidata": "https://www.wikidata.org/wiki/Q359442",
+    "wikidata_qid": "Q359442"
   }
 }

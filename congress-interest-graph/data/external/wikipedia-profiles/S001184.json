@@ -1,0 +1,41 @@
+{
+  "bioguide_id": "S001184",
+  "wikipedia_title": "Tim Scott",
+  "wikipedia_url": "https://en.wikipedia.org/wiki/Tim_Scott",
+  "wikidata_qid": "Q561315",
+  "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Tim_Scott_%2853297754192%29_%28cropped%29.jpg",
+  "short_summary": "Timothy Eugene Scott (born September 19, 1965) is an American businessman and politician serving since 2013 as the junior United States senator from South Carolina. A member of the Republican Party, he is the first African-American senator in the Southern United States to be directly elected, the longest-serving African-American senator in U.S. history, the first African-American to serve in both the House and Senate, and the first African-American senator to chair a full committee.\nBorn and raised in Charleston, Scott worked in financial services before entering politics. He served on the Charleston County Council from 1995 to 2009, was a member of the South Carolina General Assembly from 2009 to 2011, and represented South Carolina's 1st congressional district in the U.S. House of Representatives from 2011 to 2013. In 2013, Governor Nikki Haley appointed Scott to the Senate after Jim DeMint resigned. Scott won the special election for the seat in 2014, and was elected to a full term in 2016 and reelected in 2022.\nIn May 2023, Scott declared his candidacy for the 2024 Republican Party presidential nomination. He suspended his campaign in November due to low polling numbers. After the 2024 elections, Scott was elected chair of the National Republican Senatorial Committee. He also chairs the Senate Committee on Banking.",
+  "birth_date": "1965-09-19",
+  "birth_place": "North Charleston, South Carolina, U.S.",
+  "education": [],
+  "occupations": [],
+  "prior_positions": [
+    {
+      "position": "Chair of the National Republican Senatorial Committee",
+      "start_date": "January 3, 2025",
+      "end_date": ""
+    },
+    {
+      "position": "Chair of the Senate Banking Committee",
+      "start_date": "January 3, 2025",
+      "end_date": ""
+    },
+    {
+      "position": "Ranking Member of the Senate Banking Committee",
+      "start_date": "January 3, 2023",
+      "end_date": "January 3, 2025"
+    },
+    {
+      "position": "Ranking Member of the Senate Aging Committee",
+      "start_date": "February 3, 2021",
+      "end_date": "January 3, 2023"
+    }
+  ],
+  "employers": [],
+  "military_service": [],
+  "profile_sources": {
+    "wikipedia": "https://en.wikipedia.org/wiki/Tim_Scott",
+    "wikidata": "https://www.wikidata.org/wiki/Q561315",
+    "wikidata_qid": "Q561315"
+  }
+}
