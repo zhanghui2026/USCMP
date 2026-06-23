@@ -13,6 +13,7 @@ from app.models.pydantic.models import (
     HoldingsResponse, HoldingsSummary, HoldingAssetRecord, HoldingDisclosureRecord,
 )
 from app.core.errors import NotFoundError
+from app.api.routes.member_visibility import visible_member_filter
 
 router = APIRouter(tags=["holdings"])
 
@@ -25,7 +26,7 @@ def get_member_holdings(
     limit: int = Query(100, ge=1, le=500),
     db: Session = Depends(get_db),
 ):
-    member = db.query(Member).filter(Member.id == member_id).first()
+    member = db.query(Member).filter(Member.id == member_id, visible_member_filter()).first()
     if not member:
         raise NotFoundError("Member not found", {"member_id": member_id})
 

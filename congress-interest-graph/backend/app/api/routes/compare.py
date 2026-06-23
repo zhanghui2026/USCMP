@@ -9,6 +9,7 @@ from app.models.pydantic.models import (
 )
 from app.core.errors import CompareTooFewMembersError, NotFoundError
 from app.services.compare_service import compute_radar_metrics
+from app.api.routes.member_visibility import visible_member_filter
 
 router = APIRouter(tags=["compare"])
 
@@ -21,7 +22,7 @@ def compare_members(request: CompareRequest, db: Session = Depends(get_db)):
             {"member_count": len(request.member_ids), "min_required": 2},
         )
 
-    members = db.query(Member).filter(Member.id.in_(request.member_ids)).all()
+    members = db.query(Member).filter(Member.id.in_(request.member_ids), visible_member_filter()).all()
     if len(members) < len(request.member_ids):
         found_ids = {m.id for m in members}
         missing = [mid for mid in request.member_ids if mid not in found_ids]

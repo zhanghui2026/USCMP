@@ -9,6 +9,7 @@ from app.models.pydantic.models import (
     SearchResult, MemberSummary, OrganizationSummary, EventModel,
 )
 from app.core.errors import SearchQueryTooShortError
+from app.api.routes.member_visibility import filter_visible_members
 
 router = APIRouter(tags=["search"])
 
@@ -29,7 +30,7 @@ def search(
     pattern = f"%{query}%"
 
     # Search members
-    member_q = db.query(Member).filter(
+    member_q = filter_visible_members(db.query(Member)).filter(
         or_(
             Member.canonical_name.ilike(pattern),
             Member.display_name.ilike(pattern),
@@ -44,7 +45,7 @@ def search(
     for m in members:
         committee_tags = []
         if m.committee_memberships:
-            for cm in m.committee_memberships[:5]:
+            for cm in m.committee_memberships:
                 if cm.get("committee"):
                     committee_tags.append(cm["committee"])
 

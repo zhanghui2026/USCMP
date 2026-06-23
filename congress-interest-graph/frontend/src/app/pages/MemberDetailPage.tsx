@@ -165,7 +165,13 @@ export default function MemberDetailPage() {
     try {
       const [m, g] = await Promise.all([
         getMember(id),
-        getMemberGraph(id, { depth: 2, limit: 200, include_related_people: false }),
+        getMemberGraph(id, {
+          depth: 2,
+          limit: 200,
+          include_related_people: false,
+          include_finance: true,
+          include_holdings: true,
+        }),
       ]);
       setMember(m);
       setGraph(g);
@@ -210,7 +216,13 @@ export default function MemberDetailPage() {
     }
 
     try {
-      const g = await expandGraph({ node_id: nodeId, depth: 1, limit: 50 });
+      const g = await expandGraph({
+        node_id: nodeId,
+        depth: 1,
+        limit: 50,
+        include_finance: true,
+        include_holdings: true,
+      });
       if (graph) {
         const existingIds = new Set(graph.nodes.map((n) => n.id));
         const newNodes = g.nodes.filter((n) => !existingIds.has(n.id));

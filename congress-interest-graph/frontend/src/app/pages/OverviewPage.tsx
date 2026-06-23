@@ -75,6 +75,8 @@ const JOINT_COMMITTEES = [
 
 const INITIAL_DISPLAY_COUNT = 12;
 
+type CommitteeMember = MemberSummary & { currentCommittee?: string };
+
 function getCommitteeCategory(committee: string): string {
   if (HOUSE_STANDING.includes(committee)) return 'house_standing';
   if (HOUSE_SELECT.includes(committee)) return 'house_select';
@@ -117,7 +119,7 @@ function highlightText(text: string, keyword: string) {
 }
 
 interface GroupedMembers {
-  [committee: string]: MemberSummary[];
+  [committee: string]: CommitteeMember[];
 }
 
 interface CategorizedMembers {
@@ -130,12 +132,14 @@ function groupByCommitteeAndCategory(members: MemberSummary[]): { categorized: C
 
   for (const m of members) {
     if (m.committee_tags.length > 0) {
-      const committee = m.committee_tags[0];
-      const category = getCommitteeCategory(committee);
-      
-      if (!categorized[category]) categorized[category] = {};
-      if (!categorized[category][committee]) categorized[category][committee] = [];
-      categorized[category][committee].push(m);
+      const uniqueCommittees = Array.from(new Set(m.committee_tags));
+      for (const committee of uniqueCommittees) {
+        const category = getCommitteeCategory(committee);
+
+        if (!categorized[category]) categorized[category] = {};
+        if (!categorized[category][committee]) categorized[category][committee] = [];
+        categorized[category][committee].push({ ...m, currentCommittee: committee });
+      }
     } else {
       withoutCommittee.push(m);
     }
@@ -153,9 +157,10 @@ function groupByCommitteeAndCategory(members: MemberSummary[]): { categorized: C
 }
 
 // Memoized MemberCard - only re-renders when props change
-const MemberCard = memo(function MemberCard({ m, search, partyColorMap }: { m: MemberSummary; search: string; partyColorMap: Record<string, string> }) {
+const MemberCard = memo(function MemberCard({ m, search, partyColorMap }: { m: CommitteeMember; search: string; partyColorMap: Record<string, string> }) {
   const navigate = useNavigate();
   const handleClick = useCallback(() => navigate(`/member/${m.id}`), [navigate, m.id]);
+  const committeeLabel = m.currentCommittee || m.committee_tags[0];
 
   return (
     <div
@@ -193,9 +198,9 @@ const MemberCard = memo(function MemberCard({ m, search, partyColorMap }: { m: M
           {m.state ? <><span style={{ margin: '0 3px' }}>|</span>{m.state}</> : null}
         </div>
       </div>
-      {m.committee_tags.length > 0 && (
+      {committeeLabel && (
         <Tag color="blue" style={{ fontSize: 9, margin: 0, borderRadius: 3, lineHeight: '16px', flexShrink: 0 }}>
-          {m.committee_tags[0].length > 12 ? m.committee_tags[0].slice(0, 12) + '...' : m.committee_tags[0]}
+          {committeeLabel.length > 12 ? committeeLabel.slice(0, 12) + '...' : committeeLabel}
         </Tag>
       )}
     </div>
@@ -204,7 +209,7 @@ const MemberCard = memo(function MemberCard({ m, search, partyColorMap }: { m: M
 
 // Lazy committee section - only renders cards when expanded
 function CommitteeSection({ title, members, search, partyColorMap, defaultOpen = false }: {
-  title: string; members: MemberSummary[]; search: string; partyColorMap: Record<string, string>; defaultOpen?: boolean;
+  title: string; members: CommitteeMember[]; search: string; partyColorMap: Record<string, string>; defaultOpen?: boolean;
 }) {
   const [expanded, setExpanded] = useState(defaultOpen);
   const [showAll, setShowAll] = useState(false);

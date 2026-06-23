@@ -14,6 +14,7 @@ from app.models.pydantic.models import (
     CommitteeBrief, DonorModel,
 )
 from app.core.errors import NotFoundError
+from app.api.routes.member_visibility import visible_member_filter
 
 router = APIRouter(tags=["finance"])
 
@@ -25,7 +26,7 @@ def get_member_contributions(
     limit: int = Query(50, ge=1, le=500),
     db: Session = Depends(get_db),
 ):
-    member = db.query(Member).filter(Member.id == member_id).first()
+    member = db.query(Member).filter(Member.id == member_id, visible_member_filter()).first()
     if not member:
         raise NotFoundError("Member not found", {"member_id": member_id})
 

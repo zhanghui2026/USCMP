@@ -71,7 +71,7 @@ def get_member_graph(
     include_related_people: bool = False,
     include_profile_facts: bool = True,
     include_historical_background: bool = False,
-    include_finance: bool = True,
+    include_finance: bool = False,
     include_holdings: bool = False,
 ) -> dict:
     """Get ego network centered on a member.
@@ -110,8 +110,7 @@ def get_member_graph(
     edge_f = _edge_filter("r", include_profile_facts, include_finance, include_holdings)
 
     scope_filter = (
-        "AND (NOT n:Person OR n.person_scope IN ['current', 'mock', 'test'] "
-        "OR n.person_scope IS NULL)"
+        "AND (NOT n:Person OR n.person_scope = 'current' OR n.person_scope IS NULL)"
     ) if not include_historical_background else ""
 
     edge_f1 = _edge_filter("r1", include_profile_facts, include_finance, include_holdings)
@@ -124,7 +123,18 @@ def get_member_graph(
               AND ({edge_f})
               {date_clause}
               {scope_filter}
+            WITH p, r, n,
+                 CASE type(r)
+                   WHEN 'ASSIGNED_TO' THEN 0
+                   WHEN 'HELD_POSITION' THEN 1
+                   WHEN 'EMPLOYED_BY' THEN 2
+                   WHEN 'ASSOCIATED_WITH_COMMITTEE' THEN 3
+                   WHEN 'CONTRIBUTED_TO' THEN 4
+                   WHEN 'DISCLOSED_HOLDING' THEN 5
+                   ELSE 6
+                 END AS rel_priority
             RETURN p, r, n
+            ORDER BY rel_priority, coalesce(r.amount, r.value_low, 0) DESC, coalesce(n.name, n.display_name, n.id)
             LIMIT $limit
         """
         if include_historical_background:
@@ -136,11 +146,10 @@ def get_member_graph(
             RETURN p, r, n
             """
     else:
-        edge_f1 = _edge_filter("r1", include_profile_facts)
-        edge_f2 = _edge_filter("r2", include_profile_facts)
+        edge_f1 = _edge_filter("r1", include_profile_facts, include_finance, include_holdings)
+        edge_f2 = _edge_filter("r2", include_profile_facts, include_finance, include_holdings)
         scope_filter_n2 = (
-            "AND (NOT n2:Person OR n2.person_scope IN ['current', 'mock', 'test'] "
-            "OR n2.person_scope IS NULL)"
+            "AND (NOT n2:Person OR n2.person_scope = 'current' OR n2.person_scope IS NULL)"
         ) if not include_historical_background else ""
         query = f"""
             MATCH (p:Person {{id: $member_id}})-[r1]-(n1)
@@ -153,7 +162,18 @@ def get_member_graph(
               AND ({edge_f2})
               {scope_filter_n2}
               {date_clause.replace('r.', 'r2.')}
+            WITH p, r1, r2, n1, n2,
+                 CASE type(r1)
+                   WHEN 'ASSIGNED_TO' THEN 0
+                   WHEN 'HELD_POSITION' THEN 1
+                   WHEN 'EMPLOYED_BY' THEN 2
+                   WHEN 'ASSOCIATED_WITH_COMMITTEE' THEN 3
+                   WHEN 'CONTRIBUTED_TO' THEN 4
+                   WHEN 'DISCLOSED_HOLDING' THEN 5
+                   ELSE 6
+                 END AS rel_priority
             RETURN p, r1, r2, n1, n2
+            ORDER BY rel_priority, coalesce(r1.amount, r1.value_low, 0) DESC, coalesce(n1.name, n1.display_name, n1.id)
             LIMIT $limit
         """
         if include_historical_background:
@@ -179,7 +199,7 @@ def expand_node(
     end_date: Optional[date] = None,
     min_confidence: float = 0.0,
     limit: int = 200,
-    include_finance: bool = True,
+    include_finance: bool = False,
     include_holdings: bool = False,
 ) -> dict:
     """Expand a single node to show direct ego-network connections."""

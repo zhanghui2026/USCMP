@@ -12,6 +12,7 @@ from app.models.pydantic.models import (
     CircleExpandResponse,
 )
 from app.core.errors import NotFoundError
+from app.api.routes.member_visibility import filter_visible_members, visible_member_filter
 
 from typing import Any
 
@@ -27,6 +28,10 @@ def _normalize_career_highlights(raw: list | None) -> list[dict]:
         elif isinstance(item, str):
             results.append({"title": item})
     return results
+
+
+def _optional_text(value: Any) -> str | None:
+    return value if isinstance(value, str) else None
 
 router = APIRouter(tags=["members"])
 
@@ -44,7 +49,7 @@ def list_members(
     limit: int = Query(50, ge=1, le=1000),
     db: Session = Depends(get_db),
 ):
-    query = db.query(Member)
+    query = filter_visible_members(db.query(Member))
 
     if not include_historical:
         query = query.filter(Member.is_current == True)
@@ -97,7 +102,7 @@ def list_members(
             district=m.district,
             official_photo_url=m.official_photo_url,
             image_url=profile_map.get(m.id),
-            committee_tags=committee_tags[:5],
+            committee_tags=committee_tags,
             congress=m.congress,
             source=m.source,
             member_scope=m.member_scope or "current",
@@ -113,7 +118,7 @@ def list_members(
 
 @router.get("/members/{member_id}", response_model=MemberDetail)
 def get_member(member_id: str, include_historical: bool = Query(False), db: Session = Depends(get_db)):
-    member = db.query(Member).filter(Member.id == member_id).first()
+    member = db.query(Member).filter(Member.id == member_id, visible_member_filter()).first()
     if not member:
         raise NotFoundError("Member not found", {"member_id": member_id})
 
@@ -153,8 +158,8 @@ def get_member(member_id: str, include_historical: bool = Query(False), db: Sess
         committee_memberships=committee_memberships,
         career_summary=member.career_summary or [],
         china_stance_summary=member.china_stance_summary,
-        core_positions=member.core_positions,
-        comprehensive_evaluation=member.comprehensive_evaluation,
+        core_positions=_optional_text(member.core_positions),
+        comprehensive_evaluation=_optional_text(member.comprehensive_evaluation),
         controversies=member.controversies or [],
         congress=member.congress,
         source=member.source,
@@ -166,7 +171,7 @@ def get_member(member_id: str, include_historical: bool = Query(False), db: Sess
 
 @router.get("/members/{member_id}/profile", response_model=MemberProfileResponse)
 def get_member_profile(member_id: str, db: Session = Depends(get_db)):
-    member = db.query(Member).filter(Member.id == member_id).first()
+    member = db.query(Member).filter(Member.id == member_id, visible_member_filter()).first()
     if not member:
         raise NotFoundError("Member not found", {"member_id": member_id})
 

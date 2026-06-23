@@ -360,3 +360,17 @@ export interface HoldingsResponse {
   source: string;
   disclaimer: string;
 }
+
+export interface DataSourceCoverage {
+  source_id: string;
+  label: string;
+  status: string;
+  records: number;
+  covered_members: number;
+  note: string;
+}
+
+export interface DataCoverageResponse {
+  sources: DataSourceCoverage[];
+  generated_at: string;
+}

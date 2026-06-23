@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Card, Tag, Empty, Typography, Spin, Descriptions, Statistic, Row, Col } from 'antd';
-import { getMemberHoldings } from '../api/client';
-import type { HoldingsResponse, HoldingAssetRecord } from '../api/types';
+import { Card, Tag, Empty, Typography, Spin, Descriptions, Statistic, Row, Col, Alert } from 'antd';
+import { getDataCoverage, getMemberHoldings } from '../api/client';
+import type { HoldingsResponse, HoldingAssetRecord, DataSourceCoverage } from '../api/types';
 
 const { Text } = Typography;
 
@@ -27,6 +27,7 @@ const ASSET_TYPE_LABELS: Record<string, string> = {
 
 export default function HoldingsTab({ memberId }: Props) {
   const [data, setData] = useState<HoldingsResponse | null>(null);
+  const [coverage, setCoverage] = useState<DataSourceCoverage | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,6 +41,9 @@ export default function HoldingsTab({ memberId }: Props) {
     try {
       const result = await getMemberHoldings(memberId, { limit: 100 });
       setData(result);
+      getDataCoverage().then((cov) => {
+        setCoverage(cov.sources.find((s) => s.source_id === 'holdings') || null);
+      }).catch(() => {});
     } catch (err) {
       setError('加载持股数据失败');
       console.error(err);
@@ -63,6 +67,7 @@ export default function HoldingsTab({ memberId }: Props) {
   if (!data || data.holdings.length === 0) {
     return (
       <div>
+        {coverage && <CoverageNotice coverage={coverage} />}
         <Empty description="暂无持股披露数据" image={Empty.PRESENTED_IMAGE_SIMPLE} />
         <div style={{ marginTop: 12, fontSize: 11, color: '#6b7280', textAlign: 'center' }}>
           持股披露数据需通过 Congressional Financial Disclosure 导入。
@@ -75,6 +80,7 @@ export default function HoldingsTab({ memberId }: Props) {
 
   return (
     <div>
+      {coverage && <CoverageNotice coverage={coverage} />}
       <Row gutter={16} style={{ marginBottom: 16 }}>
         <Col span={8}>
           <Statistic
@@ -170,5 +176,23 @@ export default function HoldingsTab({ memberId }: Props) {
         </Text>
       </div>
     </div>
+  );
+}
+
+function CoverageNotice({ coverage }: { coverage: DataSourceCoverage }) {
+  const statusLabel: Record<string, string> = {
+    full: '全量',
+    partial: '部分导入',
+    sample: '样本数据',
+    subset: '结构化子集',
+  };
+  return (
+    <Alert
+      type={coverage.status === 'full' ? 'success' : 'warning'}
+      showIcon
+      message={`数据覆盖: ${statusLabel[coverage.status] || coverage.status}`}
+      description={coverage.note}
+      style={{ marginBottom: 12, background: '#111827', borderColor: '#374151' }}
+    />
   );
 }

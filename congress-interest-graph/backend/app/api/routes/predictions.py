@@ -12,13 +12,14 @@ from app.models.sandbox_models import SandboxClaim
 from app.models.pydantic.models import PredictionRequest, PredictionResponse
 from app.core.errors import NotFoundError
 from app.services.prediction_service import compute_prediction
+from app.api.routes.member_visibility import visible_member_filter
 
 router = APIRouter(tags=["predictions"])
 
 
 @router.post("/predictions/vote", response_model=PredictionResponse)
 def predict_vote(request: PredictionRequest, db: Session = Depends(get_db)):
-    member = db.query(Member).filter(Member.id == request.member_id).first()
+    member = db.query(Member).filter(Member.id == request.member_id, visible_member_filter()).first()
     if not member:
         raise NotFoundError("Member not found", {"member_id": request.member_id})
 

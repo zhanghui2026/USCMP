@@ -9,10 +9,12 @@ Data sources:
 
 Usage:
   python -m app.etl.import_fec_data [--cycle 2024] [--limit 10000]
+  python -m app.etl.import_fec_data --cycle 2024 --contributions-zip /path/to/indiv24.zip
 """
 
 import argparse
 import csv
+import hashlib
 import io
 import json
 import os
@@ -25,6 +27,7 @@ from typing import Any
 from app.db.postgres import SessionLocal, engine
 from app.models.sqlalchemy.models import CampaignCommittee, Donor, Contribution, Member, Base
 from sqlalchemy import text
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 
 FEC_BASE_URL = "https://www.fec.gov/files/bulk-downloads"
@@ -73,8 +76,14 @@ def parse_amount(val: str) -> float:
         return 0.0
 
 
+ALLOWED_CYCLES = {2022, 2024}
+
+
 def import_committees(cycle: int, db: SessionLocal, limit: int | None = None) -> int:
     """Import campaign committees from FEC committee master file."""
+    if cycle not in ALLOWED_CYCLES:
+        print(f"  Skipped cycle {cycle}: only {sorted(ALLOWED_CYCLES)} are allowed.")
+        return 0
     suffix = str(cycle)[-2:]
     url = f"{FEC_BASE_URL}/{cycle}/cm{suffix}.zip"
     rows, _ = download_and_extract_csv(url)
@@ -105,7 +114,8 @@ def import_committees(cycle: int, db: SessionLocal, limit: int | None = None) ->
             member = None
             if cand_id:
                 member = db.query(Member).filter(
-                    Member.fec_candidate_id == cand_id
+                    Member.fec_candidate_id == cand_id,
+                    Member.is_current == True,
                 ).first()
 
             existing = db.query(CampaignCommittee).filter(
@@ -116,6 +126,9 @@ def import_committees(cycle: int, db: SessionLocal, limit: int | None = None) ->
                 existing.name = name
                 existing.party = party or existing.party
                 existing.cycle = cycle
+                if member and not existing.candidate_id:
+                    existing.candidate_id = member.id
+                    existing.chamber = chamber or existing.chamber
             else:
                 committee = CampaignCommittee(
                     id=f"fec_cm_{fec_id}_{cycle}",
@@ -152,17 +165,22 @@ def import_contributions_from_file(
     suffix = str(cycle)[-2:]
     target_name = f"it{suffix}.txt" if suffix else "itcont.txt"
 
-    # Build set of committee IDs we care about (those linked to current members)
+    # Build set of committee IDs we care about (those linked to current members only)
     relevant_committee_ids = set()
     committee_map = {}
     rows = db.execute(
-        text("SELECT id, fec_committee_id FROM campaign_committees WHERE candidate_id IS NOT NULL")
+        text("""
+            SELECT cm.id, cm.fec_committee_id
+            FROM campaign_committees cm
+            JOIN members m ON m.id = cm.candidate_id
+            WHERE m.is_current = TRUE
+        """)
     ).fetchall()
     for r in rows:
         relevant_committee_ids.add(r.fec_committee_id)
         committee_map[r.fec_committee_id] = r.id
 
-    print(f"  Found {len(relevant_committee_ids)} relevant committees (linked to members)")
+    print(f"  Found {len(relevant_committee_ids)} relevant committees (linked to members)", flush=True)
 
     if not os.path.exists(zip_path):
         print(f"  File not found: {zip_path}")
@@ -173,6 +191,53 @@ def import_contributions_from_file(
     skipped_amount = 0
     skipped_parse = 0
     donor_cache: dict[str, str] = {}
+    donor_rows = db.execute(text("SELECT id, name, state FROM donors")).fetchall()
+    for row in donor_rows:
+        donor_cache[f"{row.name}|{row.state or ''}"] = row.id
+
+    donor_batch: dict[str, dict[str, Any]] = {}
+    contrib_batch: list[dict[str, Any]] = []
+
+    def flush_batches() -> None:
+        nonlocal donor_batch, contrib_batch
+        if donor_batch:
+            stmt = pg_insert(Donor).values(list(donor_batch.values()))
+            stmt = stmt.on_conflict_do_update(
+                index_elements=[Donor.id],
+                set_={
+                    "name": stmt.excluded.name,
+                    "donor_type": stmt.excluded.donor_type,
+                    "city": stmt.excluded.city,
+                    "state": stmt.excluded.state,
+                    "employer": stmt.excluded.employer,
+                    "industry": stmt.excluded.industry,
+                    "source": stmt.excluded.source,
+                    "source_reliability": stmt.excluded.source_reliability,
+                    "fec_data": stmt.excluded.fec_data,
+                },
+            )
+            db.execute(stmt)
+            donor_batch = {}
+
+        if contrib_batch:
+            stmt = pg_insert(Contribution).values(contrib_batch)
+            stmt = stmt.on_conflict_do_update(
+                index_elements=[Contribution.id],
+                set_={
+                    "committee_id": stmt.excluded.committee_id,
+                    "donor_id": stmt.excluded.donor_id,
+                    "amount": stmt.excluded.amount,
+                    "contribution_date": stmt.excluded.contribution_date,
+                    "cycle": stmt.excluded.cycle,
+                    "contribution_type": stmt.excluded.contribution_type,
+                    "source": stmt.excluded.source,
+                    "source_reliability": stmt.excluded.source_reliability,
+                    "fec_data": stmt.excluded.fec_data,
+                },
+            )
+            db.execute(stmt)
+            contrib_batch = []
+        db.commit()
 
     with zipfile.ZipFile(zip_path) as zf:
         # Find the correct file inside zip
@@ -181,7 +246,7 @@ def import_contributions_from_file(
             print(f"  No txt files in zip: {zf.namelist()}")
             return 0
         csv_name = csv_files[0]
-        print(f"  Processing {csv_name} (size={zf.getinfo(csv_name).file_size:,} bytes) ...")
+        print(f"  Processing {csv_name} (size={zf.getinfo(csv_name).file_size:,} bytes) ...", flush=True)
 
         # Read in chunks of 1000 lines for batch processing
         with zf.open(csv_name) as raw:
@@ -244,44 +309,54 @@ def import_contributions_from_file(
                     donor_key = f"{donor_name}|{donor_state}"
                     donor_id = donor_cache.get(donor_key)
                     if not donor_id:
-                        existing = db.query(Donor).filter(
-                            Donor.name == donor_name,
-                            Donor.state == donor_state,
-                        ).first()
-                        if existing:
-                            donor_id = existing.id
-                        else:
-                            donor_id = f"fec_donor_{abs(hash(donor_key))}"
-                            db.add(Donor(
-                                id=donor_id,
-                                name=donor_name,
-                                donor_type=contrib_type if contrib_type != "other" else "individual",
-                                city=city or None,
-                                state=donor_state or None,
-                                employer=employer or None,
-                                industry=occupation or None,
-                                source="fec",
-                            ))
+                        digest = hashlib.sha1(donor_key.encode("utf-8")).hexdigest()[:16]
+                        donor_id = f"fec_donor_{digest}"
+                        donor_batch[donor_id] = {
+                            "id": donor_id,
+                            "name": donor_name,
+                            "donor_type": contrib_type if contrib_type != "other" else "individual",
+                            "city": city or None,
+                            "state": donor_state or None,
+                            "employer": employer or None,
+                            "industry": occupation or None,
+                            "source": "fec",
+                            "source_reliability": "official",
+                            "fec_data": {},
+                        }
                         donor_cache[donor_key] = donor_id
 
-                    contrib_id = f"fec_contrib_{cmte_id}_{donor_key[:20]}_{date_str}_{amount}_{count}"
-                    db.add(Contribution(
-                        id=contrib_id,
-                        committee_id=committee_pk,
-                        donor_id=donor_id,
-                        amount=amount,
-                        contribution_date=contrib_date,
-                        cycle=cycle,
-                        contribution_type=contrib_type,
-                        source="fec",
-                    ))
+                    tran_id = row[17].strip() if len(row) > 17 else ""
+                    memo_code = row[16].strip() if len(row) > 16 else ""
+                    contrib_key = "|".join([
+                        str(cycle), cmte_id, tran_id, memo_code, donor_name,
+                        donor_state, date_str, amount_str, str(count),
+                    ])
+                    contrib_digest = hashlib.sha1(contrib_key.encode("utf-8")).hexdigest()[:20]
+                    contrib_id = f"fec_contrib_{contrib_digest}"
+                    contrib_batch.append({
+                        "id": contrib_id,
+                        "committee_id": committee_pk,
+                        "donor_id": donor_id,
+                        "amount": amount,
+                        "contribution_date": contrib_date,
+                        "cycle": cycle,
+                        "contribution_type": contrib_type,
+                        "source": "fec",
+                        "source_reliability": "official",
+                        "fec_data": {"transaction_id": tran_id, "memo_code": memo_code},
+                    })
                     count += 1
 
-                    if count % 500 == 0:
-                        db.commit()
-                        print(f"    ... {count} contributions imported (skipped_no_cmte={skipped_no_cmte}, skipped_amount={skipped_amount})")
+                    if len(contrib_batch) >= 5000:
+                        flush_batches()
+                        print(f"    ... {count} contributions imported (skipped_no_cmte={skipped_no_cmte}, skipped_amount={skipped_amount})", flush=True)
                         if limit and count >= limit:
                             break
+
+                    if limit and count >= limit:
+                        flush_batches()
+                        print(f"    ... {count} contributions imported (skipped_no_cmte={skipped_no_cmte}, skipped_amount={skipped_amount})", flush=True)
+                        break
 
                 except Exception:
                     skipped_parse += 1
@@ -290,7 +365,7 @@ def import_contributions_from_file(
                 if limit and count >= limit:
                     break
 
-    db.commit()
+    flush_batches()
     print(f"  Imported {count} contributions for cycle {cycle}")
     print(f"    Skipped (no matching committee): {skipped_no_cmte}")
     print(f"    Skipped (zero/negative amount): {skipped_amount}")
@@ -298,14 +373,23 @@ def import_contributions_from_file(
     return count
 
 
-def import_contributions(
+def import_contributions_by_cycle(
     cycle: int, db: SessionLocal,
     limit: int | None = None,
+    zip_path: str | None = None,
 ) -> int:
     """Import individual contributions from FEC data file.
     
+    Only cycles in ALLOWED_CYCLES are processed.
     First checks for a pre-downloaded zip file, falls back to HTTP download.
     """
+    if cycle not in ALLOWED_CYCLES:
+        print(f"  Skipped cycle {cycle}: only {sorted(ALLOWED_CYCLES)} are allowed.")
+        return 0
+    if zip_path:
+        print(f"  Using provided file: {zip_path}")
+        return import_contributions_from_file(cycle, zip_path, db, limit)
+
     suffix = str(cycle)[-2:]
     local_path = f"/tmp/indiv{suffix}_full.zip"
     if os.path.exists(local_path):
@@ -390,19 +474,30 @@ def import_contributions(
                     db.add(donor)
                 donor_cache[donor_key] = donor_id
 
-            contribution_id = f"fec_contrib_{cmte_id}_{donor_key[:20]}_{date_str}_{amount}_{count}"
+            tran_id = row[17].strip() if len(row) > 17 else ""
+            contribution_id = f"fec_contrib_{cycle}_{cmte_id}_{tran_id or count}"
 
-            contrib = Contribution(
-                id=contribution_id,
-                committee_id=committee.id,
-                donor_id=donor_id,
-                amount=amount,
-                contribution_date=contrib_date,
-                cycle=cycle,
-                contribution_type=contrib_type,
-                source="fec",
-            )
-            db.add(contrib)
+            existing_contrib = db.query(Contribution).filter(Contribution.id == contribution_id).first()
+            if existing_contrib:
+                existing_contrib.committee_id = committee.id
+                existing_contrib.donor_id = donor_id
+                existing_contrib.amount = amount
+                existing_contrib.contribution_date = contrib_date
+                existing_contrib.contribution_type = contribution_type
+                existing_contrib.fec_data = {"transaction_id": tran_id, "memo_code": row[16].strip() if len(row) > 16 else ""}
+            else:
+                contrib = Contribution(
+                    id=contribution_id,
+                    committee_id=committee.id,
+                    donor_id=donor_id,
+                    amount=amount,
+                    contribution_date=contrib_date,
+                    cycle=cycle,
+                    contribution_type=contrib_type,
+                    source="fec",
+                    fec_data={"transaction_id": tran_id, "memo_code": row[16].strip() if len(row) > 16 else ""},
+                )
+                db.add(contrib)
             count += 1
 
             if count % 1000 == 0:
@@ -419,25 +514,34 @@ def import_contributions(
 
 def main():
     parser = argparse.ArgumentParser(description="Import FEC bulk data")
-    parser.add_argument("--cycle", type=int, default=2024, help="Election cycle (default: 2024)")
+    parser.add_argument("--cycles", type=int, nargs="+", default=[2022, 2024],
+                        help="Election cycles to import (default: 2022 2024)")
     parser.add_argument("--limit", type=int, default=None, help="Max records per file")
+    parser.add_argument("--contributions-zip", help="Path to downloaded FEC indiv zip for streaming full import")
     parser.add_argument("--committees-only", action="store_true", help="Only import committees")
     parser.add_argument("--contributions-only", action="store_true", help="Only import contributions")
     args = parser.parse_args()
+
+    invalid = [c for c in args.cycles if c not in ALLOWED_CYCLES]
+    if invalid:
+        print(f"Cycles {invalid} are not allowed. Only {sorted(ALLOWED_CYCLES)} are supported.")
+        return
 
     db = SessionLocal()
     try:
         ensure_tables()
 
-        if not args.contributions_only:
-            cmte_count = import_committees(args.cycle, db, args.limit)
-            print(f"Committees imported: {cmte_count}")
+        for cycle in sorted(args.cycles):
+            print(f"\n=== Processing cycle {cycle} ===")
+            if not args.contributions_only:
+                cmte_count = import_committees(cycle, db, args.limit)
+                print(f"Committees imported: {cmte_count}")
 
-        if not args.committees_only:
-            contrib_count = import_contributions(args.cycle, db, args.limit)
-            print(f"Contributions imported: {contrib_count}")
+            if not args.committees_only:
+                contrib_count = import_contributions_by_cycle(cycle, db, args.limit, args.contributions_zip)
+                print(f"Contributions imported: {contrib_count}")
 
-        print(f"\nImport complete for cycle {args.cycle}")
+        print(f"\nImport complete for cycles: {args.cycles}")
     finally:
         db.close()
 

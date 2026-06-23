@@ -35,6 +35,9 @@ docker compose exec backend python3 -m app.etl.import_real_members
 docker compose exec backend python3 -m app.etl.import_fec_data
 docker compose exec backend python3 -m app.etl.import_holdings
 docker compose exec backend python3 -m app.etl.import_congress_profiles
+
+# 可选: 使用已下载的 FEC indiv zip 执行流式全量献金导入
+docker compose exec backend python3 -m app.etl.import_fec_data --cycle 2024 --contributions-only --contributions-zip /data/indiv24.zip
 ```
 
 > 详细部署说明请参考 [DEPLOYMENT.md](DEPLOYMENT.md)
@@ -215,6 +218,9 @@ python3 -m app.etl.import_real_members
 python3 -m app.etl.import_fec_data
 python3 -m app.etl.import_holdings
 python3 -m app.etl.import_congress_profiles
+
+# 可选: 使用已下载的 FEC indiv zip 执行流式全量献金导入
+python3 -m app.etl.import_fec_data --cycle 2024 --contributions-only --contributions-zip /data/indiv24.zip
 ```
 
 ## API 文档
@@ -229,6 +235,7 @@ python3 -m app.etl.import_congress_profiles
 | `/api/members/{id}/graph` | GET | 议员图谱 |
 | `/api/members/{id}/contributions` | GET | 献金记录 |
 | `/api/members/{id}/holdings` | GET | 持股披露 |
+| `/api/data-coverage` | GET | 数据源覆盖状态 |
 | `/api/graph/expand` | POST | 节点展开 |
 | `/api/search` | GET | 全局搜索 |
 | `/api/reports/markdown` | POST | Markdown 简报 |
@@ -264,6 +271,13 @@ cd frontend && npx tsc --noEmit
 | FEC.gov bulk-downloads | 竞选献金数据 | Public Domain |
 | 国会财务公开报告 | 持股披露数据 | Public Domain |
 | Wikipedia | 履历信息 | CC BY-SA 4.0 |
+
+## 数据覆盖状态
+
+- `unitedstates/congress-legislators`: 基础成员、任期、委员会数据已作为主数据源导入。
+- `FEC.gov bulk-downloads`: ETL 支持通过 `--contributions-zip` 对已下载 indiv zip 进行流式全量导入；当前演示库可能只包含样本规模记录，前端会显示覆盖状态。
+- `国会财务公开报告`: 当前结构化表优先迁移 `Member.top_holdings` 子集；完整披露文件导入需要提供 House/Senate 原始 disclosure 文件或下载源。
+- `Wikipedia / 本地 Markdown 档案`: 当前导入本地 537 份议员档案，前端展示已匹配档案字段。
 
 ## 免责声明
 

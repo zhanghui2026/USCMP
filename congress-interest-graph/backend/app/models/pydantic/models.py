@@ -427,3 +427,17 @@ class HoldingsResponse(BaseModel):
     total_count: int = 0
     source: str = "house_disclosure"
     disclaimer: str = "持股披露数据来源于国会财务公开报告。金额为区间值，不构成精确估值。不构成投资建议、法律判断或利益冲突判断。"
+
+
+class DataSourceCoverage(BaseModel):
+    source_id: str
+    label: str
+    status: str
+    records: int = 0
+    covered_members: int = 0
+    note: str = ""
+
+
+class DataCoverageResponse(BaseModel):
+    sources: list[DataSourceCoverage] = Field(default_factory=list)
+    generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))

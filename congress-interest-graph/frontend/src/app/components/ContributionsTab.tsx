@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Card, Tag, Spin, Empty, Statistic, Row, Col, Table, Typography } from 'antd';
-import { getMemberContributions } from '../api/client';
-import type { ContributionsResponse } from '../api/types';
+import { Card, Tag, Spin, Empty, Statistic, Row, Col, Table, Typography, Alert } from 'antd';
+import { getDataCoverage, getMemberContributions } from '../api/client';
+import type { ContributionsResponse, DataSourceCoverage } from '../api/types';
 
 const { Text } = Typography;
 
@@ -17,13 +17,18 @@ function fmt(n: number): string {
 
 export default function ContributionsTab({ memberId }: Props) {
   const [data, setData] = useState<ContributionsResponse | null>(null);
+  const [coverage, setCoverage] = useState<DataSourceCoverage | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const res = await getMemberContributions(memberId, { limit: 100 });
+        const [res, cov] = await Promise.all([
+          getMemberContributions(memberId, { limit: 100 }),
+          getDataCoverage(),
+        ]);
         setData(res);
+        setCoverage(cov.sources.find((s) => s.source_id === 'fec') || null);
       } catch {
         setData(null);
       } finally {
@@ -36,6 +41,7 @@ export default function ContributionsTab({ memberId }: Props) {
   if (!data || data.total_count === 0) {
     return (
       <div>
+        {coverage && <CoverageNotice coverage={coverage} />}
         <Empty description="暂无献金数据" image={Empty.PRESENTED_IMAGE_SIMPLE} />
         <div style={{ marginTop: 12, fontSize: 11, color: '#6b7280', textAlign: 'center' }}>
           需通过 FEC bulk data 或 OpenSecrets API 导入后方可显示。
@@ -55,6 +61,7 @@ export default function ContributionsTab({ memberId }: Props) {
 
   return (
     <div>
+      {coverage && <CoverageNotice coverage={coverage} />}
       <Row gutter={12} style={{ marginBottom: 12 }}>
         <Col span={8}>
           <Card size="small" style={{ background: '#1a1a2e' }}>
@@ -142,5 +149,23 @@ export default function ContributionsTab({ memberId }: Props) {
         {data.disclaimer}
       </div>
     </div>
+  );
+}
+
+function CoverageNotice({ coverage }: { coverage: DataSourceCoverage }) {
+  const statusLabel: Record<string, string> = {
+    full: '全量',
+    partial: '部分导入',
+    sample: '样本数据',
+    subset: '结构化子集',
+  };
+  return (
+    <Alert
+      type={coverage.status === 'full' ? 'success' : 'warning'}
+      showIcon
+      message={`数据覆盖: ${statusLabel[coverage.status] || coverage.status}`}
+      description={coverage.note}
+      style={{ marginBottom: 12, background: '#111827', borderColor: '#374151' }}
+    />
   );
 }

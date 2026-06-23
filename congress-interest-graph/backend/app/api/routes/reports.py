@@ -8,13 +8,14 @@ from app.models.sqlalchemy.models import Member
 from app.models.pydantic.models import ReportRequest, ReportResponse
 from app.core.errors import NotFoundError
 from app.services.report_service import build_markdown
+from app.api.routes.member_visibility import visible_member_filter
 
 router = APIRouter(tags=["reports"])
 
 
 @router.post("/reports/markdown", response_model=ReportResponse)
 def generate_markdown_report(request: ReportRequest, db: Session = Depends(get_db)):
-    member = db.query(Member).filter(Member.id == request.member_id).first()
+    member = db.query(Member).filter(Member.id == request.member_id, visible_member_filter()).first()
     if not member:
         raise NotFoundError("Member not found", {"member_id": request.member_id})
 

@@ -1,19 +1,40 @@
 """Neo4j database connection and session management."""
 
 from neo4j import GraphDatabase
+from neo4j.exceptions import ServiceUnavailable, AuthError
 from app.core.config import settings
+from app.core.logging import logger
 
 _driver = None
+_available = True
+
+
+def is_available() -> bool:
+    global _available
+    if not _available:
+        return False
+    try:
+        get_driver()
+        return True
+    except Exception:
+        return False
 
 
 def get_driver():
-    global _driver
+    global _driver, _available
+    if not _available:
+        raise ServiceUnavailable("Neo4j is not available")
     if _driver is None:
-        _driver = GraphDatabase.driver(
-            settings.neo4j_uri,
-            auth=(settings.neo4j_user, settings.neo4j_password),
-            max_connection_lifetime=3600,
-        )
+        try:
+            _driver = GraphDatabase.driver(
+                settings.neo4j_uri,
+                auth=(settings.neo4j_user, settings.neo4j_password),
+                max_connection_lifetime=3600,
+            )
+        except (ServiceUnavailable, AuthError, OSError) as e:
+            _available = False
+            logger.warning(f"Neo4j unavailable: {e}")
+            raise ServiceUnavailable(f"Neo4j unavailable: {e}")
     return _driver
 
 
@@ -25,16 +46,24 @@ def close_driver():
 
 
 def run_cypher(query: str, parameters: dict | None = None):
-    driver = get_driver()
-    with driver.session() as session:
-        result = session.run(query, parameters or {})
-        return [record for record in result]
+    try:
+        driver = get_driver()
+        with driver.session() as session:
+            result = session.run(query, parameters or {})
+            return [record for record in result]
+    except (ServiceUnavailable, OSError) as e:
+        logger.warning(f"Neo4j query failed: {e}")
+        return []
 
 
 def run_cypher_with_summary(query: str, parameters: dict | None = None):
-    driver = get_driver()
-    with driver.session() as session:
-        result = session.run(query, parameters or {})
-        records = [record.data() for record in result]
-        summary = result.consume()
-        return records, summary
+    try:
+        driver = get_driver()
+        with driver.session() as session:
+            result = session.run(query, parameters or {})
+            records = [record.data() for record in result]
+            summary = result.consume()
+            return records, summary
+    except (ServiceUnavailable, OSError) as e:
+        logger.warning(f"Neo4j query failed: {e}")
+        return [], None

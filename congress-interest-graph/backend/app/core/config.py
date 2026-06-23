@@ -16,6 +16,10 @@ class Settings(BaseSettings):
     postgres_user: str = "congress_user"
     postgres_password: str = "congress_password"
 
+    # SQLite fallback (for containerized deployment without PostgreSQL)
+    use_sqlite_fallback: bool = False
+    sqlite_fallback_path: str = "data/congress.db"
+
     # Neo4j
     neo4j_uri: str = "bolt://neo4j:7687"
     neo4j_user: str = "neo4j"
