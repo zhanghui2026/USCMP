@@ -23,7 +23,7 @@ def is_available() -> bool:
 def get_driver():
     global _driver, _available
     if not _available:
-        raise ServiceUnavailable("Neo4j is not available")
+        return None
     if _driver is None:
         try:
             _driver = GraphDatabase.driver(
@@ -33,8 +33,8 @@ def get_driver():
             )
         except (ServiceUnavailable, AuthError, OSError) as e:
             _available = False
-            logger.warning(f"Neo4j unavailable: {e}")
-            raise ServiceUnavailable(f"Neo4j unavailable: {e}")
+            logger.warning(f"Neo4j unavailable, graph features disabled: {e}")
+            return None
     return _driver
 
 

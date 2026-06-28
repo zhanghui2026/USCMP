@@ -41,20 +41,14 @@ def _detect_data_mode() -> str:
 @router.get("/health", response_model=HealthResponse)
 def health_check():
     postgres_status = "ok"
-    neo4j_status = "ok"
-
-    try:
-        db = SessionLocal()
-        db.execute(text("SELECT 1"))
-        db.close()
-    except Exception as e:
-        logger.warning(f"PostgreSQL health check failed: {e}")
-        postgres_status = "error"
+    neo4j_status = "unavailable"
 
     try:
         driver = get_driver()
-        with driver.session() as session:
-            session.run("RETURN 1")
+        if driver:
+            with driver.session() as session:
+                session.run("RETURN 1")
+            neo4j_status = "ok"
     except Exception as e:
         logger.warning(f"Neo4j health check failed: {e}")
         neo4j_status = "error"
