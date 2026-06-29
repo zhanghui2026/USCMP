@@ -180,7 +180,11 @@ def get_member_profile(member_id: str, db: Session = Depends(get_db)):
     ).first()
 
     if not profile:
-        raise NotFoundError("Profile not found for member", {"member_id": member_id})
+        return MemberProfileResponse(
+            member_id=member_id,
+            bioguide_id=member.bioguide_id,
+            profile_status="no_data",
+        )
 
     return MemberProfileResponse(
         member_id=profile.member_id,

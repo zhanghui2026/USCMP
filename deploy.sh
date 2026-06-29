@@ -6,7 +6,7 @@ usage() {
     echo "  用法: ./deploy.sh [start|stop|restart|bootstrap|init|logs]"
     echo "  start     启动 Docker Compose 服务"
     echo "  stop      停止服务"
-    echo "  bootstrap 下载预构建数据库 (含537名议员，无需等待FEC导入)"
+    echo "  bootstrap 下载预构建数据库 (含537名议员+画像，444KB)"
     echo "  init      完整初始化（下载数据+导入议员/FEC/资金汇总）"
     echo "  logs      查看日志"
     exit 0
@@ -27,6 +27,7 @@ stop() {
 bootstrap() {
     bash download-bootstrap-db.sh
     echo "快速启动完成！执行 ./deploy.sh start 启动服务。"
+    echo "包含: 537名议员 + 委员会 + 画像数据（不含FEC献金）"
 }
 
 init() {
