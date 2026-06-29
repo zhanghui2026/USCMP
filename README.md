@@ -38,25 +38,6 @@
 
 ## 版本历史
 
-### v0.95 - 国会议员档案导入
-- 导入 537 份议员档案文件 (Markdown 格式)
-- 新增 `core_positions` (核心政治主张) 和 `comprehensive_evaluation` (综合评价) 字段
-- 支持 3 种档案格式: detailed (92), short (290), very-short (155)
-- 模糊姓名匹配: 536/537 成功匹配
-- 新增 ProfileTab 组件展示对华立场、核心主张、综合评价
-- OverviewPage 性能优化: React.memo、懒加载、分页显示
-- 委员会按常设/专门/特别分类分组展示
-- 移除未使用的 echarts 依赖
-
-### v1.0 - 数据覆盖、FEC 优化、持股披露
-- 新增数据覆盖 API `/api/data-coverage`，展示基础资料、画像、FEC 献金、持股披露的数据覆盖状态
-- 优化 FEC 导入：仅保留现任议员，限制 2022/2024 周期，降低磁盘压力
-- 修复 FEC candidate ID 匹配：补正多位参议员 Senate ID，提升现任议员委员会覆盖率至 97.4%
-- 新增政治献金 (`ContributionsTab`) 与持股 (`HoldingsTab`) 前端页面
-- 新增持股披露 ETL：支持 CSV/JSON 格式的公开财务披露数据导入
-- 优化 API 稳定性：统一议员可见性过滤，避免部分接口失败阻塞整体页面加载
-- 新增 `export_to_sqlite.py` 导出脚本
-
 ### v1.1 - 资金聚合与轻量化改造
 - 新增 `MemberFinanceSummary` 聚合表：成员级资金预汇总，不再每次扫全量明细表
 - 新增 `GET /api/members/{id}/finance/summary` 优先使用聚合数据
@@ -71,6 +52,25 @@
 - 精简 backend Dockerfile（去掉 gcc 编译依赖和 dev 包）
 - 删除 `.cursor/`、`nginx/` 根目录 `node_modules/` 等残留文件
 - 项目文件移至仓库根目录，去除 `congress-interest-graph/` 嵌套层级
+
+### v1.0 - 数据覆盖、FEC 优化、持股披露
+- 新增数据覆盖 API `/api/data-coverage`，展示基础资料、画像、FEC 献金、持股披露的数据覆盖状态
+- 优化 FEC 导入：仅保留现任议员，限制 2022/2024 周期，降低磁盘压力
+- 修复 FEC candidate ID 匹配：补正多位参议员 Senate ID，提升现任议员委员会覆盖率至 97.4%
+- 新增政治献金 (`ContributionsTab`) 与持股 (`HoldingsTab`) 前端页面
+- 新增持股披露 ETL：支持 CSV/JSON 格式的公开财务披露数据导入
+- 优化 API 稳定性：统一议员可见性过滤，避免部分接口失败阻塞整体页面加载
+- 新增 `export_to_sqlite.py` 导出脚本
+
+### v0.95 - 国会议员档案导入
+- 导入 537 份议员档案文件 (Markdown 格式)
+- 新增 `core_positions` (核心政治主张) 和 `comprehensive_evaluation` (综合评价) 字段
+- 支持 3 种档案格式: detailed (92), short (290), very-short (155)
+- 模糊姓名匹配: 536/537 成功匹配
+- 新增 ProfileTab 组件展示对华立场、核心主张、综合评价
+- OverviewPage 性能优化: React.memo、懒加载、分页显示
+- 委员会按常设/专门/特别分类分组展示
+- 移除未使用的 echarts 依赖
 
 ### v0.94 - 结构化持股披露
 - 新增 `holding_assets` / `holding_disclosures` 表
