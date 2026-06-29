@@ -105,6 +105,10 @@ app.include_router(holdings.router, prefix="/api")
 async def startup():
     logger.info("Starting Congress Interest Graph API v0.1.0")
     logger.info(f"Environment: {settings.app_env}")
+    if settings.use_sqlite_fallback:
+        from app.db.postgres import Base, engine
+        Base.metadata.create_all(bind=engine)
+        logger.info("SQLite tables created/verified")
 
 
 @app.on_event("shutdown")

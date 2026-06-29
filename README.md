@@ -159,32 +159,47 @@
 ### Docker Compose (推荐，轻量模式)
 
 ```bash
-# 启动前后端
+# 1. 启动前后端
 docker compose up --build -d
+
+# 2. 下载 congress-legislators 数据并初始化数据库
+bash download-congress-data.sh
+docker compose exec backend python3 -m app.etl.import_real_members
+docker compose exec backend python3 -m app.etl.import_fec_data
+docker compose exec backend python3 -m app.etl.rebuild_finance_summary
+
+# 或一步完成:
+bash deploy.sh init
 
 # 访问
 # 前端: http://localhost:3000
 # API 文档: http://localhost:8000/docs
 ```
 
-后端默认使用 SQLite 数据库（无需 PostgreSQL/Neo4j），数据已预导入（544 名现任议员的身份、献金、档案数据）。
+后端默认使用 SQLite 数据库（无需 PostgreSQL/Neo4j）。首次启动后端会自动创建所有表结构，但数据需要通过 `init` 步骤导入。导入的数据包括 544 名现任议员的身份信息、委员会任职和 FEC 竞选献金数据。
+
+> **注意**: `import_fec_data` 会从 FEC.gov 下载约 200MB 的压缩文件并解析，首次导入可能需要几分钟。如网络不可用，可跳过该步骤，仅导入议员基础数据即可浏览成员列表。
 
 ### 本地开发
 
 ```bash
+# 0. 下载依赖数据
+bash download-congress-data.sh
+
 # 1. 启动后端 (SQLite 模式)
 cd backend
 USE_SQLITE_FALLBACK=true uvicorn app.main:app --host 0.0.0.0 --port 8000
 
-# 2. 启动前端
-cd frontend
-npm install
-npm run dev
-
-# 初始化数据（首次或重置时执行）
+# 2. 终端 2: 初始化数据
 cd backend
 USE_SQLITE_FALLBACK=true python3 -m app.etl.import_real_members
 USE_SQLITE_FALLBACK=true python3 -m app.etl.import_fec_data
+USE_SQLITE_FALLBACK=true python3 -m app.etl.rebuild_finance_summary
+
+# 3. 启动前端
+cd frontend
+npm install
+npm run dev
 ```
 
 ## API 文档

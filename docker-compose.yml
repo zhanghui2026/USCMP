@@ -13,7 +13,7 @@ services:
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     volumes:
-      - congress_data:/app/data
+      - ./data:/app/data
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000
 
   frontend:
@@ -27,6 +27,3 @@ services:
       - "${FRONTEND_PORT:-3000}:80"
     depends_on:
       - backend
-
-volumes:
-  congress_data:
