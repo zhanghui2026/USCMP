@@ -3,11 +3,12 @@ set -e
 
 usage() {
     echo "USCMP 部署脚本"
-    echo "  用法: ./deploy.sh [start|stop|restart|init|logs]"
-    echo "  start  启动 Docker Compose 服务"
-    echo "  stop   停止服务"
-    echo "  init   初始化数据（下载数据 + 导入议员/FEC/持股/档案）"
-    echo "  logs   查看日志"
+    echo "  用法: ./deploy.sh [start|stop|restart|bootstrap|init|logs]"
+    echo "  start     启动 Docker Compose 服务"
+    echo "  stop      停止服务"
+    echo "  bootstrap 下载预构建数据库 (含537名议员，无需等待FEC导入)"
+    echo "  init      完整初始化（下载数据+导入议员/FEC/资金汇总）"
+    echo "  logs      查看日志"
     exit 0
 }
 
@@ -21,6 +22,11 @@ start() {
 stop() {
     echo "停止服务..."
     docker compose down
+}
+
+bootstrap() {
+    bash download-bootstrap-db.sh
+    echo "快速启动完成！执行 ./deploy.sh start 启动服务。"
 }
 
 init() {
@@ -40,10 +46,11 @@ init() {
 }
 
 case "${1:-help}" in
-    start)   start ;;
-    stop)    stop ;;
-    restart) stop && start ;;
-    init)    init ;;
-    logs)    docker compose logs -f ;;
-    help|*)  usage ;;
+    start)     start ;;
+    stop)      stop ;;
+    restart)   stop && start ;;
+    bootstrap) bootstrap ;;
+    init)      init ;;
+    logs)      docker compose logs -f ;;
+    help|*)    usage ;;
 esac

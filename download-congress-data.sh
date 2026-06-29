@@ -4,7 +4,7 @@ set -e
 
 REPO_URL="https://github.com/unitedstates/congress-legislators.git"
 COMMIT_SHA="dfa9622263dd4c8d08636926e498f1845704d7eb"
-TARGET_DIR="data/external/congress-legislators/$COMMIT_SHA"
+TARGET_DIR="backend/data/external/congress-legislators/$COMMIT_SHA"
 
 if [ -f "$TARGET_DIR/legislators-current.yaml" ]; then
     echo "Congress-legislators data already exists at $TARGET_DIR"

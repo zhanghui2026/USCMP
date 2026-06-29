@@ -156,43 +156,65 @@
 
 ## 快速启动
 
-### Docker Compose (推荐，轻量模式)
+### Docker Compose — 快速模式 (推荐)
+
+最快的方式，下载预构建数据库（106KB，含 537 名现任议员），无需等待 FEC 数据导入：
+
+```bash
+# 1. 下载预构建数据库
+bash download-bootstrap-db.sh
+
+# 2. 启动前后端
+docker compose up --build -d
+
+# 访问
+# 前端: http://localhost:3000
+# API 文档: http://localhost:8000/docs
+
+# 或一句完成:
+bash deploy.sh bootstrap && bash deploy.sh start
+```
+
+预构建数据库包含议员基础信息和委员会数据。如需完整的 FEC 竞选献金数据，后续运行：
+
+```bash
+bash deploy.sh init
+```
+
+### Docker Compose — 完整模式
+
+从原始数据源导入全部数据（议员 + FEC 献金 + 资金汇总）：
 
 ```bash
 # 1. 启动前后端
 docker compose up --build -d
 
-# 2. 下载 congress-legislators 数据并初始化数据库
+# 2. 下载数据并初始化
 bash download-congress-data.sh
 docker compose exec backend python3 -m app.etl.import_real_members
+# 以下是可选步骤，会从 FEC.gov 下载约 200MB 数据
 docker compose exec backend python3 -m app.etl.import_fec_data
 docker compose exec backend python3 -m app.etl.rebuild_finance_summary
 
 # 或一步完成:
 bash deploy.sh init
-
-# 访问
-# 前端: http://localhost:3000
-# API 文档: http://localhost:8000/docs
 ```
 
-后端默认使用 SQLite 数据库（无需 PostgreSQL/Neo4j）。首次启动后端会自动创建所有表结构，但数据需要通过 `init` 步骤导入。导入的数据包括 544 名现任议员的身份信息、委员会任职和 FEC 竞选献金数据。
-
-> **注意**: `import_fec_data` 会从 FEC.gov 下载约 200MB 的压缩文件并解析，首次导入可能需要几分钟。如网络不可用，可跳过该步骤，仅导入议员基础数据即可浏览成员列表。
+> **注意**: `import_fec_data` 从 FEC.gov 下载约 200MB 的压缩文件并解析 220 万条献金记录，首次导入可能需要 5-10 分钟。如网络不可用，可跳过该步骤，仅导入议员基础数据即可浏览成员列表。
 
 ### 本地开发
 
 ```bash
-# 0. 下载依赖数据
-bash download-congress-data.sh
+# 0. 下载预构建数据库或依赖数据
+bash download-bootstrap-db.sh
+# 或: bash download-congress-data.sh
 
 # 1. 启动后端 (SQLite 模式)
 cd backend
 USE_SQLITE_FALLBACK=true uvicorn app.main:app --host 0.0.0.0 --port 8000
 
-# 2. 终端 2: 初始化数据
+# 2. (可选) 完整初始化
 cd backend
-USE_SQLITE_FALLBACK=true python3 -m app.etl.import_real_members
 USE_SQLITE_FALLBACK=true python3 -m app.etl.import_fec_data
 USE_SQLITE_FALLBACK=true python3 -m app.etl.rebuild_finance_summary
 
