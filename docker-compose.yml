@@ -10,6 +10,7 @@ services:
       APP_ENV: ${APP_ENV:-development}
       BACKEND_PORT: 8000
       USE_SQLITE_FALLBACK: "true"
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD:-neo4j_password}
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     volumes:
