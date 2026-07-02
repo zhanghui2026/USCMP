@@ -1,0 +1,53 @@
+{
+  "project": "US Congress Profiles - 美国国会第119届议员档案",
+  "generated_at": "2026-07-02T11:31:00+00:00",
+  "data_version": "2026.07",
+  "congress": "119th United States Congress",
+  "total_members": 538,
+  "raw_md_files_processed": 548,
+  "chamber_breakdown": {
+    "house": 448,
+    "senate": 100
+  },
+  "party_breakdown": {
+    "Republican": 279,
+    "Democrat": 266,
+    "Independent": 3
+  },
+  "tier_breakdown": {
+    "None": 87,
+    "1": 25,
+    "2": 278,
+    "3": 158
+  },
+  "matched_with_batch_data": 461,
+  "md_only_no_batch": 87,
+  "format_description": {
+    "structure": "congress-profiles/{Senate,House}/{Member_Name}/profile.json",
+    "format": "JSON - each profile contains structured meta fields + full profile_md markdown",
+    "intended_for": "Direct loading by AI or data pipeline - no parsing needed"
+  },
+  "source_files": {
+    "batch_jsons": "tier1-remaining.json + batch-t2-*.json + batch-t3-*.json (451 members)",
+    "md_profiles": "output/house/ and output/senate/ (548 members, committee-subdirs)"
+  },
+  "field_descriptions": {
+    "bioguide": "Congressional Bioguide ID",
+    "name_en": "English full name",
+    "name_cn": "Chinese translated name",
+    "party": "Political party (English)",
+    "state": "US state abbreviation",
+    "district": "Congressional district number (null for senators)",
+    "chamber": "house or senate",
+    "type": "Senator or Representative",
+    "tier": "Priority tier (1=leadership, 2=china_committee, 3=other)",
+    "birthday": "Date of birth (YYYY-MM-DD)",
+    "gender": "M or F",
+    "committees.all": "All committee memberships",
+    "committees.china_related": "China-related committees",
+    "committees.leadership_role": "Leadership position (if any)",
+    "social_media": "Twitter, Wikipedia slug, official URL",
+    "source": "Original source file relative path",
+    "profile_md": "Full Chinese political profile in markdown"
+  }
+}
